@@ -53,29 +53,45 @@
 
                     <div class="form-group">
                          <label for="descricao">Descrição</label>
-                         <textarea class="form-control resize-none" id="descricao" rows="3"></textarea>
+                         <textarea class="form-control resize-none" name="descricao" id="descricao" rows="3"></textarea>
                     </div>
 
                     <div class="form-group">
                          <label for="reembolso">Reembolso</label>
-                         <select class="form-control" id="reembolso">
-                              <option>1</option>
+                         <select class="form-control" name="reembolso" id="reembolso">
+                             <?php
+
+                                $SQLreembolso = "SELECT * FROM reembolso";
+                                $SELECTreembolso = mysqli_query($conexao, $SQLreembolso);
+
+                                while($rsConsultaReembolso = mysqli_fetch_array($SELECTreembolso)){
+                            ?>
+                                <option value="<?=strtolower($rsConsultaReembolso['nome'])?>"><?= $rsConsultaReembolso['nome'] ?></option>
+                            <?php
+                                }
+                             ?>
                          </select>
                     </div>
 
-                    <div class="form-check form-check-inline">
-                         <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                         <label class="form-check-label" for="inlineCheckbox1">1</label>
-                         </div>
-                         <div class="form-check form-check-inline">
-                         <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-                         <label class="form-check-label" for="inlineCheckbox2">2</label>
-                    </div>
+
+                        <?php
+                            $SQLmodalidade = "SELECT * FROM modalidade";
+                            $SELECTmodalidade = mysqli_query($conexao, $SQLmodalidade);
+
+                            while($rsConsultaModalidade = mysqli_fetch_array($SELECTmodalidade)){
+                        ?>
+                            <div class="form-check form-check-inline mb-3">
+                                <input class="form-check-input" name="modalidades[]" value="<?=$rsConsultaModalidade['id']?>" type="checkbox" id="<?=$rsConsultaModalidade['id']?>" value="option1">
+                                <label class="form-check-label" for="<?=$rsConsultaModalidade['id']?>"><?=$rsConsultaModalidade['nome']?></label>
+                            </div>
+                        <?php
+                            }
+                        ?>
 
                     <div class="form-group row ">
                         <div class="col-sm-10 ">
                             <button type="button" class="btn btn-danger fechar">Fechar</button>
-                            <button type="submit" name="btn-cadastrar-operador" class="btn btn-success">Cadastrar</button>
+                            <button type="submit" name="btn-cadastrar-plano" class="btn btn-success">Cadastrar</button>
                         </div>
                     </div>
                 </form>

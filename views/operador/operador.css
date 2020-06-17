@@ -93,3 +93,6 @@ body{
 .resize-none{
      resize: none;
 }
+.navbar .nav-hover:hover {
+     text-decoration: underline;
+}
