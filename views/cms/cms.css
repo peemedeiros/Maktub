@@ -1,0 +1,63 @@
+.section-login{
+    width: 100vw;
+    height: 100vh ;
+    background-image: linear-gradient(to right, #4CA1AF, #C4E0E5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.login-box{
+    width: 600px;
+    height: auto;
+    min-height: 300px;
+    background-color: #FFFFFF;
+    border-radius: 8px;
+    box-shadow: 2px 2px 4px rgba(5, 5, 5, 0.384);
+}
+.formulario{
+    padding: 15px;
+}
+
+/* CMS HOME */
+
+#cms-home{
+    width: 100%;
+    height: auto;
+    min-height: 500px;
+}
+.contato-content{
+    width: 100%;
+    height: 50px;
+    background-color: #FFFFFF;
+}
+
+#container-modal,
+#container-modal2{
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.705);
+    position: fixed;
+    display: flex;
+    z-index: 0;
+    align-items: center;
+    justify-content: center;
+    visibility: hidden;
+    opacity: 0;
+    transition: 500ms;
+}
+#modal,
+#modal2{
+    width: 500px;
+    height: 400px;
+    box-sizing: border-box;
+    border-radius: 10px;
+    padding: 50px;
+    background-color: rgb(253, 253, 253);
+
+}
+
+/* NAV BAR */
+.right{
+    position: absolute;
+    right: 70px;
+}
