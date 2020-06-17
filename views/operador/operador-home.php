@@ -1,15 +1,19 @@
+<?php
+     require_once('actions/operador-logged.php');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
-    <?php require_once('cms-headers.php')?>
+    <?php require_once('operador-headers.php')?>
 
     <body>
         
         <?php require_once('template/nav-bar.php')?>
         
-        <div id="cms-home">
+        <div id="operador-home">
             <div class="container pt-2">
-                <div class="contato-content mb-3">
-                    <h2>Mensagens</h2>
+                <div class="home-content mb-3">
+                    <h2>Suas cotações</h2>
                 </div>
                 <table class="table table-striped">
                     <thead>
@@ -32,8 +36,5 @@
                 </table>
             </div>
         </div>
-
-
-        <script src="../../assets/js/bootstrap.min.js"></script>
     </body>
 </html>

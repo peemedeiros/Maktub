@@ -43,7 +43,29 @@
                         zIndex:'-1'
                     });
                 });
+
+                $('.editar').click(function(){
+                    $('#container-modal2').css({
+                        visibility:'visible',
+                        opacity:'1',
+                        zIndex:'999'
+                    });
+                });
             });
+            
+            function editar(idOperador){
+                $.ajax({
+                    type:"POST",
+                    url:"template/modalOperador.php",
+                    data:{
+                        modo:"editar",
+                        id:idOperador
+                    },
+                    success: function(dados){
+                        $('#modal2').html(dados);
+                    }
+                })
+            }
         </script>
     </head>
     <body>
@@ -56,14 +78,14 @@
                     <div class="form-group row">
                         <label for="inputNome" class="col-sm-2 col-form-label">Nome</label>
                         <div class="col-sm-10">
-                            <input type="text" name="nome" class="form-control" id="inputNome">
+                            <input type="text" name="nome" class="form-control" id="inputNome" required>
                         </div>
                     </div>
 
                     <div class="form-group row">
                         <label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
                         <div class="col-sm-10">
-                            <input type="email" name="email" class="form-control" id="inputEmail">
+                            <input type="email" name="email" class="form-control" id="inputEmail" required>
                             <small id="emailHelp" class="form-text text-muted">Este email será utilizado no login</small>
                         </div>
                     </div>
@@ -71,7 +93,7 @@
                     <div class="form-group row">
                         <label for="inputSenha" class="col-sm-2 col-form-label">Senha</label>
                         <div class="col-sm-10">
-                            <input type="password" name="senha" class="form-control" id="inputSenha">
+                            <input type="password" name="senha" class="form-control" id="inputSenha" required>
                         </div>
                     </div>
 
@@ -82,6 +104,11 @@
                         </div>
                     </div>
                 </form>
+            </div>
+        </div>
+        <div id="container-modal2">
+            <div id="modal2">
+            
             </div>
         </div>
         
@@ -121,7 +148,10 @@
                         <tr>
                             <td><?=$rsConsulta['nome']?></td>
                             <td><?=$rsConsulta['email']?></td>
-                            <td>@mdo</td>
+                            <td class="d-flex">
+                                <a href="actions/cms-deletar.php?idoperador=<?=$rsConsulta['id']?>&modo=deletaroperador" class="btn btn-danger btn-sm text-white mr-2"> Excluir </a>
+                                <button type="button" onclick="editar(<?=$rsConsulta['id']?>)" class="btn btn-primary btn-sm mr-2 editar"> Editar </button>
+                            </td>
                         </tr>
 
 
@@ -133,5 +163,7 @@
                 </table>
             </div>
         </div>
+        
+        <script src="../../assets/js/bootstrap.min.js"></script>
     </body>
 </html>
