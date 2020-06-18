@@ -58,8 +58,13 @@ body{
 
  /* CMS PLANOS */
  .min-body{
-      min-width: 300px !important;
-      min-height: 200px !important;
+      min-width: 320px !important;
+      min-height: 370px !important;
+ }
+
+ .center{
+      margin-left: auto;
+      margin-right: auto;
  }
 
 #container-modal,
@@ -95,4 +100,7 @@ body{
 }
 .navbar .nav-hover:hover {
      text-decoration: underline;
+}
+.scroll-on{
+     overflow: auto;
 }

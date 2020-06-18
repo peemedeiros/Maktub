@@ -1,5 +1,5 @@
 <nav class="navbar mb-3 navbar-dark bg-primary navbar-expand-lg">
-    <a class="navbar-brand font-weight-bold" href="#">Painel - Operador</a>
+    <a class="navbar-brand font-weight-bold" href="#">Bem-vindo <?=$nome?></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>

@@ -8,7 +8,7 @@
     if(isset($_GET['success'])){
         if($_GET['success'] == 'true'){
             $status = 'success d-block';
-            $message = "Operador cadastrado com sucesso!";
+            $message = "Operacao realizada com sucesso!";
         }else{
             $status = 'danger d-block';
             $message = "Erro ao conectar com o banco de dados";

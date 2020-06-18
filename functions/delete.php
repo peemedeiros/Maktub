@@ -8,6 +8,7 @@ function delete($table, $id){
      $SQL = "DELETE FROM ".$table." WHERE id = ".$id;
 
      if($delete = mysqli_query($conexao, $SQL)){
+          mysqli_close($conexao);
           return $delete;
      }else{
           return false;

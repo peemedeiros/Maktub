@@ -45,8 +45,8 @@
           </script>
      </head>
      <body>
-          <h4 class="mb-4">Novo operador</h4>
-          <form action="actions/cms-cadastrar-operador.php" method="POST">
+          <h4 class="mb-4">Editar operador</h4>
+          <form action="actions/cms-cadastrar-operador.php?modo=editar&operador=<?=$id?>" method="POST">
 
           <div class="form-group row">
                <label for="inputNome" class="col-sm-2 col-form-label">Nome</label>
@@ -66,14 +66,14 @@
           <div class="form-group row">
                <label for="inputSenha" class="col-sm-2 col-form-label">Senha</label>
                <div class="col-sm-10">
-                    <input type="password" name="senha" class="form-control" id="inputSenha" required>
+                    <input type="password" name="senha" class="form-control" id="inputSenha">
                </div>
           </div>
 
           <div class="form-group row ">
                <div class="col-sm-10 ">
                     <button type="button" class="btn btn-danger fechar">Fechar</button>
-                    <button type="submit" name="btn-cadastrar-operador" class="btn btn-success">Cadastrar</button>
+                    <button type="submit" name="btn-cadastrar-operador" class="btn btn-success">Editar</button>
                </div>
           </div>
           </form>
