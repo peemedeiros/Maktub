@@ -1,155 +1,140 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="UTF-8">
+    <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-        <link rel="stylesheet" href="views/site/site.css">
+        <link rel="stylesheet" href="../../assets/css/bootstrap.min.css">
+        <link rel="stylesheet" href="site.css">
         <title>Aragon Seguros</title>
-        <link rel="icon" type="imagem/png" href="assets/img/aragon-icon.png" />
+        <link rel="icon" type="imagem/png" href="../../assets/img/aragon-icon.png" />
     </head>
     <body>
         <div class="top-bar">
-            <div class="container">
-                <div class="row justify-content-between">
-                    <div class="login-box">
-                        <div class="nav-icon">
-                            <img src="assets/img/user.png" alt="login">
+                <div class="container">
+                    <div class="row justify-content-between">
+                        <div class="login-box">
+                            <div class="nav-icon">
+                                <img src="../../assets/img/user.png" alt="login">
+                            </div>
+                            <div class="nav-link">
+                                <a href="../operador/operador-login.php" class="text-white">Sou consultor</a>
+                            </div>
                         </div>
-                        <div class="nav-link">
-                            <a href="views/operador/operador-login.php" class="text-white">Sou consultor</a>
-                        </div>
-                    </div>
 
-                    <div class="login-box">
-                        <div class="nav-icon">
-                            <img src="assets/img/adm.png" alt="login">
-                        </div>
-                        <div class="nav-link">
-                            <a href="views/cms/cms-login.php" class="text-white">Sou administrador</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <nav id="navigation-bar">
-            <div class="container d-flex justify-content-between">
-                <div class="logo">
-                    <img src="assets/img/aragon.png" alt="logo">
-                </div>
-                <ul class="navigation-all-itens">
-                    <li class="navigation-item ativado">
-                        <a href="index.php">
-                            HOME
-                        </a>
-                    </li>
-                    <li class="navigation-item ">
-                        <a href="views/site/sobre.php">
-                            SOBRE
-                        </a>
-                    </li>
-                    <li class="navigation-item ">
-                        <a href="views/site/contato.php">
-                            CONTATO
-                        </a>
-                    </li>
-                    <li class="navigation-item ">
-                        <a href="views/site/suporte.php">
-                            SUPORTE
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-            <ol class="carousel-indicators">
-                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-            </ol>
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img src="assets/img/hospital.jpg" class="d-block w-100" alt="...">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5>First slide label</h5>
-                        <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <img src="assets/img/hospital2.jpg" class="d-block w-100" alt="...">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5>First slide label</h5>
-                        <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <img src="assets/img/hospital3.jpg" class="d-block w-100" alt="...">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5>First slide label</h5>
-                        <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-                    </div>
-                </div>
-
-                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
-                </a>
-                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
-                </a>
-            </div>
-        </div>
-
-        <div class="section1">
-            <div class="container d-flex">
-                <div class="col-lg-6">
-                    <div class="doc-img">
-                        <img src="assets/img/doctor.png" alt="">
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="row d-flex justify-content-center">
-                        <img class="about-logo" src="assets/img/aragon.png" alt="">
-                    </div>
-                    <div class="row">
-                        <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                        </p>
-                        <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="decoracao">
-            <div class="borda-dashed">
-                
-            </div>
-        </div>
-
-        <div class="section2 pt-3">
-            <div class="container">
-                <div class="row d-flex justify-content-center">
-                    <h1>Faça uma simulação antes de enviar sua cotação</h1>
-                </div>
-                <hr>
-                <div class="row">
-                    <div class="col-lg-6">
-                        <div class="formulario-simulacao">
-
+                        <div class="login-box">
+                            <div class="nav-icon">
+                                <img src="../../assets/img/adm.png" alt="login">
+                            </div>
+                            <div class="nav-link">
+                                <a href="../cms/cms-login.php" class="text-white">Sou administrador</a>
+                            </div>
                         </div>
                     </div>
-                    <div class="col-lg-6">
-
-                    </div>
                 </div>
             </div>
-        </div>
+            <nav id="navigation-bar">
+                <div class="container d-flex justify-content-between">
+                    <div class="logo">
+                        <img src="../../assets/img/aragon.png" alt="logo">
+                    </div>
+                    <ul class="navigation-all-itens">
+                        <li class="navigation-item ">
+                            <a href="../../index.php">
+                                HOME
+                            </a>
+                        </li>
+                        <li class="navigation-item ">
+                            <a href="sobre.php">
+                                SOBRE
+                            </a>
+                        </li>
+                        <li class="navigation-item ativado">
+                            <a href="contato.php">
+                                CONTATO
+                            </a>
+                        </li>
+                        <li class="navigation-item ">
+                            <a href="suporte.php">
+                                SUPORTE
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            <div class="contato-title d-flex justify-content-center align-items-center">
+                <h1>
+                    Contate nos
+                </h1>
+            </div>
+            <section class="contato-section1 d-flex ">
+                <div class="formulario-contato d-flex justify-content-center">
+                    <div class="contato-formulario-title">
+                        <h2> Entre em contato com a gente</h2>
+                        <h5> Estamos abertos a qualquer sugestão. </h5>
+                    </div>
+                    
+                    <div class="contato-formulario-info">
+                        <div class=row>
+                            <div class="coluna-img mr-5  d-flex align-items-center">
+                                <img src="../../assets/img/phone.png" alt="">
+                            </div>
+                            <div class="coluna-info">
+                                <h6> +55 (11) 3055 - 1213</h6>
+                                <h6> +55 (11) 93055 - 1213 </h6>
+                            </div>
+                        </div>
+                    </div>
 
-        <footer>
+                    <div class="contato-formulario-info">
+                        <div class=row>
+                            <div class="coluna-img mr-5  d-flex align-items-center justify-content-center">
+                                <img src="../../assets/img/mail.png" alt="">
+                            </div>
+                            <div class="coluna-info">
+                                <h6> info@gmail.com</h6>
+                                <h6> support@aragon.com </h6>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="contato-formulario-info">
+                        <div class=row>
+                            <div class="coluna-img mr-5 d-flex align-items-center">
+                                <img src="../../assets/img/pin.png" alt="">
+                            </div>
+                            <div class="coluna-info">
+                                <h6> Rua Robert Bosch, 544  </h6>
+                                <h6> 06453-017 </h6>
+                                <h6> Barra Funda, São Paulo - SP</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="formulario-contato-mensagem">
+                    <form class="mensagem">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Nome <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Telefone para contato <span  class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="exampleInputPassword1">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Email</label>
+                            <input type="text" class="form-control" id="exampleInputPassword1">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="exampleFormControlTextarea1">Sua observação</label>
+                            <textarea class="form-control resize-none" id="exampleFormControlTextarea1" rows="3"></textarea>
+                        </div>
+                        <small id="emailHelp" class="form-text text-muted mb-3">Os itens com <span class="text-danger">*</span> são obrigatórios</small>
+                        <button type="submit" class="btn btn-primary btn-block">Enviar</button>
+                    </form>
+                </div>
+            </section>
+            <footer>
             <div class="container flexColumn">
                 <div class="footer_menu">
                     <div class="fm_1">
@@ -206,16 +191,16 @@
                                 </div>
                                 <div class="medicenter_social_media">
                                     <div class="social_media_space">
-                                        <a href="./"><img src="assets/img/facebook.png" border="0" width="20" /></a>
+                                        <a href="./"><img src="../../assets/img/facebook.png" border="0" width="20" /></a>
                                     </div>
                                     <div class="social_media_space">
-                                        <a href="./"><img src="assets/img/twitter.png" border="0" width="20" /></a>
+                                        <a href="./"><img src="../../assets/img/twitter.png" border="0" width="20" /></a>
                                     </div>
                                     <div class="social_media_space">
-                                        <a href="./"><img src="assets/img/rss.png" border="0" width="20" /></a>
+                                        <a href="./"><img src="../../assets/img/rss.png" border="0" width="20" /></a>
                                     </div>
                                     <div class="social_media_space">
-                                        <a href="./"><img src="assets/img/googleplus.png" border="0" width="20" /></a>
+                                        <a href="./"><img src="../../assets/img/googleplus.png" border="0" width="20" /></a>
                                     </div>
                                 </div>
                             </div>
@@ -231,7 +216,7 @@
                                     <div class="latest_post">
                                         <div class="latest_title">
                                             <div class="flecha_title">
-                                                <img src="assets/img/arrow.png" border="0" width="10" />
+                                                <img src="../../assets/img/arrow.png" border="0" width="10" />
                                             </div>
                                             <div class="latest_text">
                                                 <a href="./">Mauris adipiscing mauris fringilla turpis interdum pulvinar nisi malesuada.</a>
@@ -242,7 +227,7 @@
                                     <div class="latest_post">
                                         <div class="latest_title">
                                             <div class="flecha_title">
-                                                <img src="assets/img/arrow.png" border="0" width="10" />
+                                                <img src="../../assets/img/arrow.png" border="0" width="10" />
                                             </div>
                                             <div class="latest_text">
                                                 <a href="./">Mauris adipiscing mauris fringilla turpis interdum pulvinar nisi malesuada.</a>
@@ -253,7 +238,7 @@
                                     <div class="latest_post">
                                         <div class="latest_title">
                                             <div class="flecha_title">
-                                                <img src="assets/img/arrow.png" border="0" width="10" />
+                                                <img src="../../assets/img/arrow.png" border="0" width="10" />
                                             </div>
                                             <div class="latest_text">
                                                 <a href="./">Mauris adipiscing mauris fringilla turpis interdum pulvinar nisi malesuada.</a>
@@ -275,7 +260,7 @@
                                 <div class="latest_tweet">
                                     <div class="tweet_title">
                                         <div class="flecha_title">
-                                            <img src="assets/img/arrow.png" border="0" width="10" />
+                                            <img src="../../assets/img/arrow.png" border="0" width="10" />
                                         </div>
                                         <div class="latest_tweet_text">
                                             <a href="./">Mauris adipiscing mauris fringilla turpis interdum pulvinar nisi malesuada.</a>
@@ -286,7 +271,7 @@
                                 <div class="latest_tweet">
                                     <div class="tweet_title">
                                         <div class="flecha_title">
-                                            <img src="assets/img/arrow.png" border="0" width="10" />
+                                            <img src="../../assets/img/arrow.png" border="0" width="10" />
                                         </div>
                                         <div class="latest_tweet_text">
                                             <a href="./">Mauris adipiscing mauris fringilla turpis interdum pulvinar nisi malesuada.</a>
@@ -297,7 +282,7 @@
                                 <div class="latest_tweet">
                                     <div class="tweet_title">
                                         <div class="flecha_title">
-                                            <img src="assets/img/arrow.png" border="0" width="10" />
+                                            <img src="../../assets/img/arrow.png" border="0" width="10" />
                                         </div>
                                         <div class="latest_tweet_text">
                                             <a href="./">Mauris adipiscing mauris fringilla turpis interdum pulvinar nisi malesuada.</a>
@@ -308,7 +293,7 @@
                                 <div class="latest_tweet">
                                     <div class="tweet_title">
                                         <div class="flecha_title">
-                                            <img src="assets/img/arrow.png" border="0" width="10" />
+                                            <img src="../../assets/img/arrow.png" border="0" width="10" />
                                         </div>
                                         <div class="latest_tweet_text">
                                             <a href="./">Mauris adipiscing mauris fringilla turpis interdum pulvinar nisi malesuada.</a>
@@ -325,8 +310,7 @@
                 </div>
             </div>
         </footer>
-                
-        <script src="assets/js/script.js"></script>
-        <script src="assets/js/bootstrap.bundle.min.js"></script>
+
+
     </body>
 </html>

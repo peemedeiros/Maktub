@@ -4,10 +4,10 @@
             <img src="assets/img/aragon.png" alt="logo">
         </div>
         <ul class="navigation-all-itens">
-            <li class="navigation-item ativado">HOME</li>
-            <li class="navigation-item">SOBRE NÓS</li>
-            <li class="navigation-item">CONTATO</li>
-            <li class="navigation-item">SUPORTE</li>
+            <li class="navigation-item ativado" id="home">HOME</li>
+            <li class="navigation-item " id="sobre">SOBRE NÓS</li>
+            <li class="navigation-item " id="contato">CONTATO</li>
+            <li class="navigation-item " id="suporte">SUPORTE</li>
         </ul>
     </div>
 </div>

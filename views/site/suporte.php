@@ -1,12 +1,14 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-        <link rel="stylesheet" href="views/site/site.css">
+        <link rel="stylesheet" href="../../assets/css/bootstrap.min.css">
+        <link rel="stylesheet" href="site.css">
         <title>Aragon Seguros</title>
-        <link rel="icon" type="imagem/png" href="assets/img/aragon-icon.png" />
+        <link rel="icon" type="imagem/png" href="../../assets/img/aragon-icon.png" />
     </head>
     <body>
         <div class="top-bar">
@@ -14,19 +16,19 @@
                 <div class="row justify-content-between">
                     <div class="login-box">
                         <div class="nav-icon">
-                            <img src="assets/img/user.png" alt="login">
+                            <img src="../../assets/img/user.png" alt="login">
                         </div>
                         <div class="nav-link">
-                            <a href="views/operador/operador-login.php" class="text-white">Sou consultor</a>
+                            <a href="../operador/operador-login.php" class="text-white">Sou consultor</a>
                         </div>
                     </div>
 
                     <div class="login-box">
                         <div class="nav-icon">
-                            <img src="assets/img/adm.png" alt="login">
+                            <img src="../../assets/img/adm.png" alt="login">
                         </div>
                         <div class="nav-link">
-                            <a href="views/cms/cms-login.php" class="text-white">Sou administrador</a>
+                            <a href="../cms/cms-login.php" class="text-white">Sou administrador</a>
                         </div>
                     </div>
                 </div>
@@ -35,119 +37,74 @@
         <nav id="navigation-bar">
             <div class="container d-flex justify-content-between">
                 <div class="logo">
-                    <img src="assets/img/aragon.png" alt="logo">
+                    <img src="../../assets/img/aragon.png" alt="logo">
                 </div>
                 <ul class="navigation-all-itens">
-                    <li class="navigation-item ativado">
-                        <a href="index.php">
+                    <li class="navigation-item ">
+                        <a href="../../index.php">
                             HOME
                         </a>
                     </li>
-                    <li class="navigation-item ">
-                        <a href="views/site/sobre.php">
+                    <li class="navigation-item">
+                        <a href="sobre.php">
                             SOBRE
                         </a>
                     </li>
                     <li class="navigation-item ">
-                        <a href="views/site/contato.php">
+                        <a href="contato.php">
                             CONTATO
                         </a>
                     </li>
-                    <li class="navigation-item ">
-                        <a href="views/site/suporte.php">
+                    <li class="navigation-item ativado">
+                        <a href="suporte.php">
                             SUPORTE
                         </a>
                     </li>
                 </ul>
             </div>
-        </nav>
-        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-            <ol class="carousel-indicators">
-                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-            </ol>
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img src="assets/img/hospital.jpg" class="d-block w-100" alt="...">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5>First slide label</h5>
-                        <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <img src="assets/img/hospital2.jpg" class="d-block w-100" alt="...">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5>First slide label</h5>
-                        <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <img src="assets/img/hospital3.jpg" class="d-block w-100" alt="...">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5>First slide label</h5>
-                        <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-                    </div>
-                </div>
-
-                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
-                </a>
-                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
-                </a>
-            </div>
+        </nav>  
+        <div class="suporte-title d-flex justify-content-center align-items-center">
+            
         </div>
 
-        <div class="section1">
-            <div class="container d-flex">
-                <div class="col-lg-6">
-                    <div class="doc-img">
-                        <img src="assets/img/doctor.png" alt="">
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="row d-flex justify-content-center">
-                        <img class="about-logo" src="assets/img/aragon.png" alt="">
-                    </div>
-                    <div class="row">
-                        <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                        </p>
-                        <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
 
-        <div class="decoracao">
-            <div class="borda-dashed">
-                
-            </div>
-        </div>
-
-        <div class="section2 pt-3">
+        <section id="suporte-section1">
             <div class="container">
-                <div class="row d-flex justify-content-center">
-                    <h1>Faça uma simulação antes de enviar sua cotação</h1>
+                <div class="suporte-busca mb-4"> 
+                    <h3>Dúvidas? Talvez nós já respondemos</h3>
+                    <div class="row">
+                        <form class="form-inline">
+                            
+                            <div class="form-group mx-sm-3 mb-2">
+                                <input type="text" class="form-control aumentar-input" id="inputPassword2" placeholder="Busque uma dúvida">
+                            </div>
+                            <button type="submit" class="btn btn-primary mb-2"> <img src="../../assets/img/search.png" class="search-icon" alt=""> Buscar </button>
+                        </form>
+                    </div>
                 </div>
-                <hr>
-                <div class="row">
-                    <div class="col-lg-6">
-                        <div class="formulario-simulacao">
 
+                <h4 class="mb-2">Perguntas frequentes</h4>
+                <hr class="mb-5">
+
+                <div id="duvidas">
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            Pergunta?
+                        </div>
+                        <div class="card-body">
+                            This is some text within a card body.
                         </div>
                     </div>
-                    <div class="col-lg-6">
 
-                    </div>
+                    
                 </div>
+                <hr>
+                    <h6>Não achou o que procura? Mande nos sua pergunta</h6>
+                    <button class="btn btn-primary btn-lg d-flex align-items-center mb-5"> <img src="../../assets/img/plus.png" class="button-icon mr-2" alt="add"> Fazer uma nova pergunta </button>
+
+
             </div>
-        </div>
+        </section>
 
         <footer>
             <div class="container flexColumn">
@@ -206,16 +163,16 @@
                                 </div>
                                 <div class="medicenter_social_media">
                                     <div class="social_media_space">
-                                        <a href="./"><img src="assets/img/facebook.png" border="0" width="20" /></a>
+                                        <a href="./"><img src="../../assets/img/facebook.png" border="0" width="20" /></a>
                                     </div>
                                     <div class="social_media_space">
-                                        <a href="./"><img src="assets/img/twitter.png" border="0" width="20" /></a>
+                                        <a href="./"><img src="../../assets/img/twitter.png" border="0" width="20" /></a>
                                     </div>
                                     <div class="social_media_space">
-                                        <a href="./"><img src="assets/img/rss.png" border="0" width="20" /></a>
+                                        <a href="./"><img src="../../assets/img/rss.png" border="0" width="20" /></a>
                                     </div>
                                     <div class="social_media_space">
-                                        <a href="./"><img src="assets/img/googleplus.png" border="0" width="20" /></a>
+                                        <a href="./"><img src="../../assets/img/googleplus.png" border="0" width="20" /></a>
                                     </div>
                                 </div>
                             </div>
@@ -231,7 +188,7 @@
                                     <div class="latest_post">
                                         <div class="latest_title">
                                             <div class="flecha_title">
-                                                <img src="assets/img/arrow.png" border="0" width="10" />
+                                                <img src="../../assets/img/arrow.png" border="0" width="10" />
                                             </div>
                                             <div class="latest_text">
                                                 <a href="./">Mauris adipiscing mauris fringilla turpis interdum pulvinar nisi malesuada.</a>
@@ -242,7 +199,7 @@
                                     <div class="latest_post">
                                         <div class="latest_title">
                                             <div class="flecha_title">
-                                                <img src="assets/img/arrow.png" border="0" width="10" />
+                                                <img src="../../assets/img/arrow.png" border="0" width="10" />
                                             </div>
                                             <div class="latest_text">
                                                 <a href="./">Mauris adipiscing mauris fringilla turpis interdum pulvinar nisi malesuada.</a>
@@ -253,7 +210,7 @@
                                     <div class="latest_post">
                                         <div class="latest_title">
                                             <div class="flecha_title">
-                                                <img src="assets/img/arrow.png" border="0" width="10" />
+                                                <img src="../../assets/img/arrow.png" border="0" width="10" />
                                             </div>
                                             <div class="latest_text">
                                                 <a href="./">Mauris adipiscing mauris fringilla turpis interdum pulvinar nisi malesuada.</a>
@@ -275,7 +232,7 @@
                                 <div class="latest_tweet">
                                     <div class="tweet_title">
                                         <div class="flecha_title">
-                                            <img src="assets/img/arrow.png" border="0" width="10" />
+                                            <img src="../../assets/img/arrow.png" border="0" width="10" />
                                         </div>
                                         <div class="latest_tweet_text">
                                             <a href="./">Mauris adipiscing mauris fringilla turpis interdum pulvinar nisi malesuada.</a>
@@ -286,7 +243,7 @@
                                 <div class="latest_tweet">
                                     <div class="tweet_title">
                                         <div class="flecha_title">
-                                            <img src="assets/img/arrow.png" border="0" width="10" />
+                                            <img src="../../assets/img/arrow.png" border="0" width="10" />
                                         </div>
                                         <div class="latest_tweet_text">
                                             <a href="./">Mauris adipiscing mauris fringilla turpis interdum pulvinar nisi malesuada.</a>
@@ -297,7 +254,7 @@
                                 <div class="latest_tweet">
                                     <div class="tweet_title">
                                         <div class="flecha_title">
-                                            <img src="assets/img/arrow.png" border="0" width="10" />
+                                            <img src="../../assets/img/arrow.png" border="0" width="10" />
                                         </div>
                                         <div class="latest_tweet_text">
                                             <a href="./">Mauris adipiscing mauris fringilla turpis interdum pulvinar nisi malesuada.</a>
@@ -308,7 +265,7 @@
                                 <div class="latest_tweet">
                                     <div class="tweet_title">
                                         <div class="flecha_title">
-                                            <img src="assets/img/arrow.png" border="0" width="10" />
+                                            <img src="../../assets/img/arrow.png" border="0" width="10" />
                                         </div>
                                         <div class="latest_tweet_text">
                                             <a href="./">Mauris adipiscing mauris fringilla turpis interdum pulvinar nisi malesuada.</a>
@@ -325,8 +282,12 @@
                 </div>
             </div>
         </footer>
-                
-        <script src="assets/js/script.js"></script>
-        <script src="assets/js/bootstrap.bundle.min.js"></script>
+
+        
+
+        
+
+        <script src="../../assets/js/script.js"></script>
+        <script src="../../assets/js/bootstrap.bundle.min.js"></script>
     </body>
 </html>
