@@ -1,4 +1,28 @@
+<?php
+    require_once('../../functions/conexao.php');
+    $conexao = conexaoMysql();
 
+    $status = 'info d-none';
+    $message = "";
+    $pergunta = "";
+
+    if(isset($_GET['success'])){
+        if($_GET['success'] == 'true'){
+            $status = 'success d-block';
+            $message = "Sua pergunta foi enviada para nossa equipe!";
+        }else{
+            $status = 'danger d-block';
+            $message = "Erro ao conectar com o banco de dados";
+        }
+    }
+
+    if(isset($_POST['btn-buscar'])){
+
+        $pergunta = $_POST['ask'];
+        
+    }
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -73,36 +97,61 @@
                 <div class="suporte-busca mb-4"> 
                     <h3>Dúvidas? Talvez nós já respondemos</h3>
                     <div class="row">
-                        <form class="form-inline">
-                            
+                        <form class="form-inline" action="suporte.php" method="post">
                             <div class="form-group mx-sm-3 mb-2">
-                                <input type="text" class="form-control aumentar-input" id="inputPassword2" placeholder="Busque uma dúvida">
+                                <input type="text" name="ask" value="<?=$pergunta?>" class="form-control aumentar-input" id="inputPassword2" placeholder="Busque uma dúvida">
                             </div>
-                            <button type="submit" class="btn btn-primary mb-2"> <img src="../../assets/img/search.png" class="search-icon" alt=""> Buscar </button>
+                            <button type="submit" name="btn-buscar" class="btn btn-primary mb-2"> <img src="../../assets/img/search.png" class="search-icon" alt=""> Buscar </button>
                         </form>
                     </div>
                 </div>
-
+                <div class="alert alert-<?=$status?>" role="alert">
+                    <?=$message?> Caso prefira entre em contato <a href="contato.php"> clicando aqui </a>
+                </div>
                 <h4 class="mb-2">Perguntas frequentes</h4>
                 <hr class="mb-5">
 
                 <div id="duvidas">
-                    <div class="card mb-4">
+
+                    <?php
+
+                        if(isset($_POST['btn-buscar'])){
+
+                            $SQL = "SELECT * FROM faq WHERE pergunta LIKE '%".$pergunta."%' AND status = 1 ";
+                            
+                        }else{
+                            $SQL = "SELECT * FROM faq WHERE status = 1";
+                        }
+
+                        
+                        $SELECT = mysqli_query($conexao, $SQL);
+
+                        while($rsConsulta = mysqli_fetch_array($SELECT)){
+
+                    ?>
+                    <div class="card mb-4 ">
                         <div class="card-header">
-                            Pergunta?
+                            <h5><?=$rsConsulta['pergunta']?></h5>
                         </div>
                         <div class="card-body">
-                            This is some text within a card body.
+                            R: <?=$rsConsulta['resposta']?>
                         </div>
                     </div>
 
-                    
+
+                    <?php
+                        }
+                    ?>
                 </div>
                 <hr>
-                    <h6>Não achou o que procura? Mande nos sua pergunta</h6>
-                    <button class="btn btn-primary btn-lg d-flex align-items-center mb-5"> <img src="../../assets/img/plus.png" class="button-icon mr-2" alt="add"> Fazer uma nova pergunta </button>
-
-
+                    <h6 class="ml-3">Não achou o que procura? Mande nos sua pergunta ou entre em contato <a href="contato.php"> clicando aqui </a></h6>
+                    <form class="form-inline mb-5" action="actions/cadastrar-pergunta.php" method="POST">
+                        <div class="form-group mx-sm-3 mb-2">
+                            <input type="text" class="form-control" name="pergunta" id="inputPergunta" placeholder="Pergunte">
+                        </div>
+                        <button type="submit" name="btn-cadastrar-pergunta" class="btn btn-primary mb-2">Mandar nova pergunta</button>
+                    </form>
+                    
             </div>
         </section>
 

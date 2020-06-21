@@ -511,6 +511,8 @@ footer .widget_title_text {
 	width: 15px;
 	height: 15px;
 }
-
+#inputPergunta{
+	width: 450px !important;
+}
 
 

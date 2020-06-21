@@ -1,3 +1,20 @@
+<?php
+
+    $status = 'info d-none';
+    $message = "";
+
+    if(isset($_GET['success'])){
+        if($_GET['success'] == 'true'){
+            $status = 'success d-block';
+            $message = "Sua mensagem foi enviada!";
+        }else{
+            $status = 'danger d-block';
+            $message = "Erro ao conectar com o banco de dados";
+        }
+    }
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -111,26 +128,29 @@
                     </div>
                 </div>
                 <div class="formulario-contato-mensagem">
-                    <form class="mensagem">
+                    <form class="mensagem" action="actions/cadastrar-contato.php" method="POST">
+                        <div class="alert alert-<?=$status?>" role="alert">
+                            <?=$message?>
+                        </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Nome <span class="text-danger">*</span></label>
-                            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                            <input type="text" name="nome" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">Telefone para contato <span  class="text-danger">*</span></label>
-                            <input type="text" class="form-control" id="exampleInputPassword1">
+                            <input type="text" name="contato" class="form-control" id="exampleInputPassword1">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">Email</label>
-                            <input type="text" class="form-control" id="exampleInputPassword1">
+                            <input type="email" name="email" class="form-control" id="exampleInputPassword1">
                         </div>
 
                         <div class="form-group">
-                            <label for="exampleFormControlTextarea1">Sua observação</label>
-                            <textarea class="form-control resize-none" id="exampleFormControlTextarea1" rows="3"></textarea>
+                            <label for="exampleFormControlTextarea1">Sua observação <span class="text-danger">*</span></label>
+                            <textarea name="obs" class="form-control resize-none" id="exampleFormControlTextarea1" rows="3"></textarea>
                         </div>
                         <small id="emailHelp" class="form-text text-muted mb-3">Os itens com <span class="text-danger">*</span> são obrigatórios</small>
-                        <button type="submit" class="btn btn-primary btn-block">Enviar</button>
+                        <button type="submit" name="btn-cadastrar-contato" class="btn btn-primary btn-block">Enviar</button>
                     </form>
                 </div>
             </section>

@@ -55,6 +55,22 @@
     background-color: rgb(253, 253, 253);
 
 }
+.large-modal{
+    width: 600px !important;
+    height: 500px !important;
+}
+.resize-none{
+    height: 160px !important;
+    resize: none !important;
+}
+.visualizado-icone,
+.visualizado-icone-2{
+    width: 20px !important;
+    height: 15px !important;
+}
+.visualizado-icone-2{
+    width: 15px !important;
+}
 
 /* NAV BAR */
 .right{
