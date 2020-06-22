@@ -87,9 +87,12 @@ body{
     height: 560px;
     box-sizing: border-box;
     border-radius: 10px;
-    padding: 50px;
+    padding: 30px;
     background-color: rgb(253, 253, 253);
 
+}
+.aumentar-card{
+     width: 500px !important;
 }
 .small-input{
      width: 150px !important;
@@ -103,4 +106,7 @@ body{
 }
 .scroll-on{
      overflow: auto;
+}
+.modal-grande{
+     width: 700px !important;
 }

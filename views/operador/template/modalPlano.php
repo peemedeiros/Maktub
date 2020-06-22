@@ -52,69 +52,62 @@
     </head>
     <body>
 
-        <h4 class="mb-4">Editar plano</h4>
-        <form action="actions/operador-cadastrar-plano.php?operador=<?=$operador?>&modo=editar&plano=<?=$id?>" method="POST">
-            
-            <div class="form-group row">
-                <label for="inputNome" class="col-sm-2 col-form-label">Nome</label>
-                <div class="col-sm-10">
-                    <input type="text" name="nome" value="<?=$nome?>" class="form-control" id="inputNome" required>
+        <h6 >Novo plano</h6>
+        <small>Relacione o plano com as idades que melhor o atendem.</small>
+        
+        <form action="actions/relacionando-idade.php?plano=<?=$id?>&operador=<?=$operador?>" method="POST">
+            <div class="row ">
+                <div class="col-md-8 ">
+                    <div class="form-group row">
+                        <label for="inputNome" class="col-sm-2 col-form-label">Nome</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="nome" class="form-control" id="inputNome" disabled value="<?=$nome?>">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="inputValor" class="col-sm-2 col-form-label">Valor</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="valor" class="form-control small-input" id="inputValor" disabled value="<?=$valor?>">
+                            <small id="valorHelper" class="form-text text-muted">Valor base para o cálculo. Cálculo do valor é feito a partir da idade do contratante</small>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="descricao">Descrição</label>
+                        <textarea class="form-control resize-none" name="descricao" id="descricao" rows="3" disabled><?=$descricao?></textarea>
+                    </div>
+
+                    <div class="form-group row ">
+                        <div class="col-sm-10 ">
+                            <button type="button" class="btn btn-danger fechar">Fechar</button>
+                            <button type="submit" name="btn-cadastrar-plano" class="btn btn-success">Relacionar</button>
+                        </div>
+                    </div>
                 </div>
-            </div>
-
-            <div class="form-group row">
-                <label for="inputValor" class="col-sm-2 col-form-label">Valor</label>
-                <div class="col-sm-10">
-                    <input type="text" name="valor" value="<?=$valor?>" class="form-control small-input" id="inputValor" required>
-                    <small id="valorHelper" class="form-text text-muted">Valor base para cálculo do plano.</small>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label for="descricao">Descrição</label>
-                <textarea class="form-control resize-none" name="descricao" id="descricao" rows="3"><?=$descricao?></textarea>
-            </div>
-
-            <div class="form-group">
-                <label for="reembolso">Reembolso</label>
-                <select class="form-control" name="reembolso" id="reembolso">
+                <div class="col-md-4 d-flex flex-column align-items-center overflow-auto">
+                    
                     <?php
+                    
+                        $SQL = "SELECT * FROM faixa_etaria";
+                        $SELECT = mysqli_query($conexao, $SQL);
 
-                        $SQLreembolso = "SELECT * FROM reembolso";
-                        $SELECTreembolso = mysqli_query($conexao, $SQLreembolso);
-
-                        while($rsConsultaReembolso = mysqli_fetch_array($SELECTreembolso)){
+                        while($rsConsulta = mysqli_fetch_array($SELECT)){
+                            
                     ?>
-                        <option value="<?=$reembolso?>"><?= $rsConsultaReembolso['nome'] ?></option>
+
+                    <div class="form-group form-check">
+                        <input type="checkbox"  name="idades[]" value="<?=$rsConsulta['id']?>" class="form-check-input">
+                        <label class="form-check-label"><?=$rsConsulta['range_idade']?></label>
+                    </div>
+
                     <?php
                         }
                     ?>
-                </select>
-            </div>
 
-
-            <div class="d-flex"> <span class="mr-2"> Modalidades: </span> 
-
-                <?php
-                    $SQLSelectModalidade = "SELECT planos_modalidades.*, modalidade.nome AS modalidade FROM planos_modalidades INNER JOIN modalidade ON planos_modalidades.id_modalidades = modalidade.id WHERE planos_modalidades.id_planos =".$id;
-
-                    $SELECTmodalidadesPlanos = mysqli_query($conexao, $SQLSelectModalidade);
-
-                    while($rsConsultaPlanoModalidade = mysqli_fetch_array($SELECTmodalidadesPlanos)){
-                ?>
-                    <p class="btn btn-info btn-sm mr-1"> <?=$rsConsultaPlanoModalidade['modalidade']?> </p>
-                <?php
-                    }
-                ?>
-
-            </div>
-
-            <div class="form-group row ">
-                <div class="col-sm-10 ">
-                    <button type="button" class="btn btn-danger fechar">Fechar</button>
-                    <button type="submit" name="btn-cadastrar-plano" class="btn btn-success">Editar</button>
                 </div>
             </div>
+                
         </form>
         
     </body>

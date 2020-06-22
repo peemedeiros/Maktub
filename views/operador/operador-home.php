@@ -25,12 +25,35 @@
                         </tr>
                     </thead>
                     <tbody>
+                        <?php
+                        
+                            $SQL = "SELECT * FROM cotacao WHERE id_operador = ".$_GET['operador'];
+                            
+                            if($SELECT = mysqli_query($conexao, $SQL)){
+                                while($rsConsulta = mysqli_fetch_array($SELECT)){
+                           
+
+                            
+                               
+                        ?>
+
                         <tr>
-                            <td>Pedro Medeiros</td>
-                            <td>pedro@hotmail.com</td>
-                            <td>20/01/2002</td>
-                            <td>@mdo</td>
+                            <td><?=$rsConsulta['nome']?></td>
+                            <td><?=$rsConsulta['email']?></td>
+                            <td><?=$rsConsulta['contato']?></td>
+                            <td>
+                                <button class="btn btn-primary">
+                                    ver
+                                </button>
+                            </td>
                         </tr>
+
+                        <?php
+                        
+                                    }   
+                                }     
+
+                        ?>
                         
                     </tbody>
                 </table>

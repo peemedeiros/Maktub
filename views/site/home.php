@@ -1,3 +1,8 @@
+<?php
+    require_once('functions/conexao.php');
+    $conexao = conexaoMysql();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -139,11 +144,92 @@
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="formulario-simulacao">
+                            <form method="POST" action="views/site/simulacao-planos.php">
+                                <div class="form-group">
+                                    <label for="inputNome">Nome</label>
+                                    <input type="text" name="nome" class="form-control" id="inputNome" aria-describedby="NomeHelper">
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputContato">Contato</label>
+                                    <input type="text" name="contato" class="form-control" id="inputContato">
+                                </div>
 
+                                <div class="form-group">
+                                    <label for="inputEmail">Email</label>
+                                    <input type="email" name="email" class="form-control" id="inputEmail">
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="selectIdade">Idade</label>
+                                    <select class="form-control" name="idade" id="selectIdade">
+                                    <option>Selecione sua idade</option>
+                                        <?php
+                                            $SQL = "SELECT * FROM faixa_etaria";
+                                            $SELECT = mysqli_query($conexao, $SQL);
+
+                                            while($rsConsulta = mysqli_fetch_array($SELECT)){
+                                        ?>
+
+                                        <option value="<?=$rsConsulta['id']?>"><?=$rsConsulta['range_idade']?></option>
+
+                                        <?php
+                                            }
+                                        ?>
+                        
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="selectModalidade">Modalidade</label>
+                                    <select class="form-control" name="modalidade" id="selectModalidade">
+                                    <option>Tipo de acomodação</option>
+                                        <?php
+                                            $SQLmodalidade = "SELECT * FROM modalidade";
+                                            $SELECTmodalidade = mysqli_query($conexao, $SQLmodalidade);
+
+                                            while($rsConsultaModalidade = mysqli_fetch_array($SELECTmodalidade)){
+                                        ?>
+
+                                        <option value="<?=$rsConsultaModalidade['id']?>"><?=$rsConsultaModalidade['nome']?></option>
+
+                                        <?php
+                                            }
+                                        ?>
+                        
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="selectReembolso">Reembolso</label>
+                                    <select class="form-control" name="reembolso" id="selectReembolso">
+                                    <option>Tipo de reembolso</option>
+                                        <?php
+                                            $SQLreembolso = "SELECT * FROM reembolso";
+                                            $SELECTreembolso = mysqli_query($conexao, $SQLreembolso);
+
+                                            while($rsConsultaReembolso = mysqli_fetch_array($SELECTreembolso)){
+                                        ?>
+
+                                        <option value="<?=$rsConsultaReembolso['id']?>"><?=$rsConsultaReembolso['nome']?></option>
+
+                                        <?php
+                                            }
+                                        ?>
+                        
+                                    </select>
+                                </div>
+
+                                <button type="submit" name="btn-simular" class="btn btn-primary btn-lg btn-block">Iniciar simulação</button>
+                            </form>
                         </div>
                     </div>
                     <div class="col-lg-6">
+                        <div class="row">
+                            <h3 class="mb-4"> Coloque seus dados para encontrarmos o plano ideal para você</h3>
+                        </div>
+                        <div class="woman-question">
 
+                        </div>
                     </div>
                 </div>
             </div>

@@ -1,163 +1,214 @@
 <?php
+require_once('../../functions/conexao.php');
+$conexao = conexaoMysql();
 
-    $status = 'info d-none';
-    $message = "";
+if(isset($_POST['btn-simular'])){
 
-    if(isset($_GET['success'])){
-        if($_GET['success'] == 'true'){
-            $status = 'success d-block';
-            $message = "Sua mensagem foi enviada!";
-        }else if($_GET['success'] == 'false'){
-            $status = 'danger d-block';
-            $message = "Erro ao conectar com o banco de dados";
-        }else{
-            $status = 'info d-block';
-            $message = "Sua cotação foi enviada para um de nossos consultores, caso prefira, entre em contato diretamente!";
-        }
+    $nome = $_POST['nome'];
+    $contato = $_POST['contato'];
+    $email = $_POST['email'];
+    $idade = $_POST['idade'];
+    $modalidade = $_POST['modalidade'];
+    $reembolso = $_POST['reembolso'];
+
+    $display = "block";
+
+    $aumentoPorIdade = 0;
+    $aumentoPorModalidade = 0;
+
+    $SQLAcrescimo = "SELECT * FROM faixa_etaria WHERE id = ".$idade.";";
+    $SELECTAcrescimo = mysqli_query($conexao, $SQLAcrescimo);
+    
+    if($rsAcrescimo = mysqli_fetch_array($SELECTAcrescimo)){
+        $aumentoPorIdade = $rsAcrescimo['acrescimo'];
     }
+
+
+    $SQLAcrescimoModalidade = "SELECT * FROM modalidade WHERE id= ".$modalidade;
+
+    if($SELECTAcrescimoModalidade = mysqli_query($conexao, $SQLAcrescimoModalidade)){
+
+        if($rsAcrescimoModalidade = mysqli_fetch_array($SELECTAcrescimoModalidade)){
+            $aumentoPorModalidade = $rsAcrescimoModalidade['acrescimo'];
+        }
+
+    }else{
+        echo('teste');
+    }
+
+}else{
+    header('location: ../../index.php');
+}
+
 
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
     <head>
-    <meta charset="UTF-8">
+        <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="../../assets/css/bootstrap.min.css">
         <link rel="stylesheet" href="site.css">
         <title>Aragon Seguros</title>
         <link rel="icon" type="imagem/png" href="../../assets/img/aragon-icon.png" />
+        <script src="../../assets/js/jquery.js"></script>
+        <script>
+            $(document).ready(function(){
+                $('.botaoSelecionado').click(function(){
+                    $('.botaoSelecionado').css({border:'', color:'', backgroundColor:''});
+                    $(this).css({
+                        border:'solid 2px #ffffff',
+                        backgroundColor:'#194d11'
+                    });
+
+                });
+            });
+        </script>
     </head>
     <body>
         <div class="top-bar">
-                <div class="container">
-                    <div class="row justify-content-between">
-                        <div class="login-box">
-                            <div class="nav-icon">
-                                <img src="../../assets/img/user.png" alt="login">
-                            </div>
-                            <div class="nav-link">
-                                <a href="../operador/operador-login.php" class="text-white">Sou consultor</a>
-                            </div>
+            <div class="container">
+                <div class="row justify-content-between">
+                    <div class="login-box">
+                        <div class="nav-icon">
+                            <img src="../../assets/img/user.png" alt="login">
                         </div>
+                        <div class="nav-link">
+                            <a href="../operador/operador-login.php" class="text-white">Sou consultor</a>
+                        </div>
+                    </div>
 
-                        <div class="login-box">
-                            <div class="nav-icon">
-                                <img src="../../assets/img/adm.png" alt="login">
-                            </div>
-                            <div class="nav-link">
-                                <a href="../cms/cms-login.php" class="text-white">Sou administrador</a>
-                            </div>
+                    <div class="login-box">
+                        <div class="nav-icon">
+                            <img src="../../assets/img/adm.png" alt="login">
+                        </div>
+                        <div class="nav-link">
+                            <a href="../cms/cms-login.php" class="text-white">Sou administrador</a>
                         </div>
                     </div>
                 </div>
             </div>
-            <nav id="navigation-bar">
-                <div class="container d-flex justify-content-between">
-                    <div class="logo">
-                        <img src="../../assets/img/aragon.png" alt="logo">
-                    </div>
-                    <ul class="navigation-all-itens">
-                        <li class="navigation-item ">
-                            <a href="../../index.php">
-                                HOME
-                            </a>
-                        </li>
-                        <li class="navigation-item ">
-                            <a href="sobre.php">
-                                SOBRE
-                            </a>
-                        </li>
-                        <li class="navigation-item ativado">
-                            <a href="contato.php">
-                                CONTATO
-                            </a>
-                        </li>
-                        <li class="navigation-item ">
-                            <a href="suporte.php">
-                                SUPORTE
-                            </a>
-                        </li>
-                    </ul>
+        </div>
+        <nav id="navigation-bar">
+            <div class="container d-flex justify-content-between">
+                <div class="logo">
+                    <img src="../../assets/img/aragon.png" alt="logo">
                 </div>
-            </nav>
-            <div class="contato-title d-flex justify-content-center align-items-center">
-                <h1>
-                    Contate nos
-                </h1>
+                <ul class="navigation-all-itens">
+                    <li class="navigation-item ativado">
+                        <a href="../../index.php ">
+                            HOME
+                        </a>
+                    </li>
+                    <li class="navigation-item ">
+                        <a href="sobre.php">
+                            SOBRE
+                        </a>
+                    </li>
+                    <li class="navigation-item ">
+                        <a href="contato.php">
+                            CONTATO
+                        </a>
+                    </li>
+                    <li class="navigation-item ">
+                        <a href="suporte.php">
+                            SUPORTE
+                        </a>
+                    </li>
+                </ul>
             </div>
-            <section class="contato-section1 d-flex ">
-                <div class="formulario-contato d-flex justify-content-center">
-                    <div class="contato-formulario-title">
-                        <h2> Entre em contato com a gente</h2>
-                        <h5> Estamos abertos a qualquer sugestão. </h5>
+        </nav>
+
+        <div id="operador-home" class="mt-5">
+            <div class="container pt-2">
+                <div class="home-content mb-3 d-flex justify-content-center">
+                    <h2>Planos ideais para a sua idade</h2>
+                </div>
+                <hr>
+                
+                <form action="actions/cadastrar-simulacao.php?modalidade=<?=$modalidade?>&reembolso=<?=$reembolso?>&idade=<?=$idade?>" method="POST">
+
+                    <div class="form-group">
+                        <input type="text" name="nome" value="<?=$nome?>" readonly class="form-control">
                     </div>
+                    <div class="form-group">
+                        <input type="email" name="email" value="<?=$email?>" readonly class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="contato" value="<?=$contato?>" readonly class="form-control">
+                    </div>
+
+
+                    <div class="row d-flex">
+                        
+                    <?php
                     
-                    <div class="contato-formulario-info">
-                        <div class=row>
-                            <div class="coluna-img mr-5  d-flex align-items-center">
-                                <img src="../../assets/img/phone.png" alt="">
-                            </div>
-                            <div class="coluna-info">
-                                <h6> +55 (11) 3055 - 1213</h6>
-                                <h6> +55 (11) 93055 - 1213 </h6>
-                            </div>
-                        </div>
-                    </div>
+                        $SQLselect = "SELECT plano.*, reembolso.nome AS reembolso, planos_faixas_etarias.id_faixas_etarias as idIdade, planos_modalidades.id_modalidades FROM plano INNER JOIN reembolso ON plano.id_reembolso = reembolso.id INNER JOIN planos_faixas_etarias ON plano.id = planos_faixas_etarias.id_planos INNER JOIN planos_modalidades ON plano.id = planos_modalidades.id_planos WHERE planos_faixas_etarias.id_faixas_etarias = ".$idade." AND planos_modalidades.id_modalidades =".$modalidade;
+                        $SELECT = mysqli_query($conexao, $SQLselect);
+                        
+                        while($rsConsultaPlano = mysqli_fetch_array($SELECT)){
 
-                    <div class="contato-formulario-info">
-                        <div class=row>
-                            <div class="coluna-img mr-5  d-flex align-items-center justify-content-center">
-                                <img src="../../assets/img/mail.png" alt="">
-                            </div>
-                            <div class="coluna-info">
-                                <h6> info@gmail.com</h6>
-                                <h6> support@aragon.com </h6>
-                            </div>
-                        </div>
-                    </div>
+                            if(count($rsConsultaPlano))
+                                $display = "none";
 
-                    <div class="contato-formulario-info">
-                        <div class=row>
-                            <div class="coluna-img mr-5 d-flex align-items-center">
-                                <img src="../../assets/img/pin.png" alt="">
+                    ?>
+                        
+                        <div class="card min-body text-white bg-primary mb-3 aumentar-card  center" style="max-width: 18rem;">
+                            <div class="card-header"><?=$rsConsultaPlano['nome']?></div>
+                                
+                                <div class="card-body scroll-on">
+                                    <h5 class="card-title">
+                                        R$ <?=number_format($rsConsultaPlano['valor'] + $aumentoPorModalidade + $aumentoPorIdade, 2, ',', '.')?>
+                                    </h5>
+                                <p class="card-text"><?=$rsConsultaPlano['descricao']?></p>
                             </div>
-                            <div class="coluna-info">
-                                <h6> Rua Robert Bosch, 544  </h6>
-                                <h6> 06453-017 </h6>
-                                <h6> Barra Funda, São Paulo - SP</h6>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="formulario-contato-mensagem">
-                    <form class="mensagem" action="actions/cadastrar-contato.php" method="POST">
-                        <div class="alert alert-<?=$status?>" role="alert">
-                            <?=$message?>
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Nome <span class="text-danger">*</span></label>
-                            <input type="text" name="nome" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputPassword1">Telefone para contato <span  class="text-danger">*</span></label>
-                            <input type="text" name="contato" class="form-control" id="exampleInputPassword1">
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputPassword1">Email</label>
-                            <input type="email" name="email" class="form-control" id="exampleInputPassword1">
-                        </div>
+                            <div class="card-footer">
+                                    
+                                    <div class="d-flex "> <span class="mr-2"> Modalidades: </span> 
 
-                        <div class="form-group">
-                            <label for="exampleFormControlTextarea1">Sua observação <span class="text-danger">*</span></label>
-                            <textarea name="obs" class="form-control resize-none" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                        <?php
+                                            $SQLSelectModalidade = "SELECT planos_modalidades.*, modalidade.nome AS modalidade FROM planos_modalidades INNER JOIN modalidade ON planos_modalidades.id_modalidades = modalidade.id WHERE planos_modalidades.id_planos =".$rsConsultaPlano['id'];
+
+                                            $SELECTmodalidadesPlanos = mysqli_query($conexao, $SQLSelectModalidade);
+
+                                            while($rsConsultaPlanoModalidade = mysqli_fetch_array($SELECTmodalidadesPlanos)){
+                                        ?>
+                                            <p class="btn btn-outline-light btn-sm mr-1"> <?=$rsConsultaPlanoModalidade['modalidade']?> </p>
+                                        <?php
+                                            }
+                                        ?>
+
+                                    </div>
+                                    <p>Reembolso: <?=$rsConsultaPlano['reembolso']?></p>
+                                    <div class="form-group">
+                                        <input type="text" name="operador" value="<?=$rsConsultaPlano['id_operador']?>" readonly class="form-control d-none">
+                                    </div>
+
+                                    <div class="d-flex">
+                                        <label for="plano<?=$rsConsultaPlano['id']?>" class="btn btn-success btn-sm botaoSelecionado"> Selecionar </label>
+                                        <input class="form-check-input d-none" type="radio" name="selecionePlano" id="plano<?=$rsConsultaPlano['id']?>" value=" <?=$rsConsultaPlano['id']?> ">
+                                    </div>
+                            </div>
                         </div>
-                        <small id="emailHelp" class="form-text text-muted mb-3">Os itens com <span class="text-danger">*</span> são obrigatórios</small>
-                        <button type="submit" name="btn-cadastrar-contato" class="btn btn-primary btn-block">Enviar</button>
-                    </form>
-                </div>
-            </section>
-            <footer>
+                    
+                    <?php
+                        }
+                    ?>      
+                        <div class="alert alert-warning d-<?=$display?>" role="alert">
+                            Não temos planos disponíveis para a sua idade, fale diretamente conosco <a href="contato.php"> clicando aqui </a>
+                        </div>      
+                    </div>
+                    <div class="row d-flex justify-content-center mb-5">
+                        <button name="btn-cadastrar-cotacao" class="btn btn-success btn-lg"> Enviar cotação</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+
+
+        <footer>
             <div class="container flexColumn">
                 <div class="footer_menu">
                     <div class="fm_1">
@@ -334,6 +385,7 @@
             </div>
         </footer>
 
-
+        <script src="../../assets/js/script.js"></script>
+        <script src="../../assets/js/bootstrap.bundle.min.js"></script>
     </body>
 </html>

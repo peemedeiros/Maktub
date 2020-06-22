@@ -7,10 +7,13 @@
     if(isset($_GET['success'])){
         if($_GET['success'] == 'true'){
             $status = 'success d-block';
-            $message = "Operador cadastrado com sucesso!";
-        }else{
+            $message = "Idades atribuidas, cadastro do plano finalizado com sucesso!";
+        }else if($_GET['success'] == 'false'){
             $status = 'danger d-block';
-            $message = "Erro ao conectar com o banco de dados";
+            $message = "Nome do plano já existe, Por favor escolha outro.";
+        }else{
+            $status = 'warning d-block';
+            $message = "Para que o plano fique disponível no site, atribua as idades que o plano irá cobrir.";
         }
     }
 
@@ -70,6 +73,7 @@
         <div id="container-modal">
             <div id="modal">
                 <h4 class="mb-4">Novo plano</h4>
+                <p> Para finalizar o cadastro do plano, relacione com as idades</p>
                 <form action="actions/operador-cadastrar-plano.php?operador=<?=$_GET['operador']?>" method="POST">
                     
                     <div class="form-group row">
@@ -160,15 +164,37 @@
                     while($rsConsultaPlano = mysqli_fetch_array($SELECT)){
                 ?>
                 
-                    <div class="card min-body text-white bg-primary mb-3  center" style="max-width: 18rem;">
+                    <div class="card min-body text-white bg-primary mb-3 aumentar-card  center" style="max-width: 18rem;">
                          <div class="card-header"><?=$rsConsultaPlano['nome']?></div>
                               <div class="card-body scroll-on">
                               <h5 class="card-title"><?=$rsConsultaPlano['valor']?></h5>
                               <p class="card-text"><?=$rsConsultaPlano['descricao']?></p>
                          </div>
                          <div class="card-footer">
+                                <div class="d-flex flex-wrap"> <span class="mr-2"> Idades: </span> 
+
+                                <?php
+                                    $SQLSelectIdades = "SELECT planos_faixas_etarias.*, faixa_etaria.range_idade AS idade FROM planos_faixas_etarias INNER JOIN faixa_etaria ON planos_faixas_etarias.id_faixas_etarias = faixa_etaria.id WHERE planos_faixas_etarias.id_planos =".$rsConsultaPlano['id'];
+
+                                    $SELECTidadesPlanos = mysqli_query($conexao, $SQLSelectIdades);
+
+                                    $display = "block";
+
+                                    while($rsConsultaIdadesPlanos = mysqli_fetch_array($SELECTidadesPlanos)){
+
+                                        if(count($rsConsultaIdadesPlanos))
+                                            $display = "none";
+                                ?>
+                                    <p class="btn btn-outline-light btn-sm mr-1"> <?=$rsConsultaIdadesPlanos['idade']?> </p>
+                                <?php
+                                    }
+                                ?>
+
+                                </div>
+
+                                <hr class="bg-light">
                                 
-                                <div class="d-flex"> <span class="mr-2"> Modalidades: </span> 
+                                <div class="d-flex "> <span class="mr-2"> Modalidades: </span> 
 
                                     <?php
                                         $SQLSelectModalidade = "SELECT planos_modalidades.*, modalidade.nome AS modalidade FROM planos_modalidades INNER JOIN modalidade ON planos_modalidades.id_modalidades = modalidade.id WHERE planos_modalidades.id_planos =".$rsConsultaPlano['id'];
@@ -187,7 +213,7 @@
 
                                 <div class="d-flex">
                                     <a href="actions/operador-deletar-plano.php?operador=<?=$_GET['operador']?>&idplano=<?=$rsConsultaPlano['id']?>&modo=deletarplano" class="btn btn-danger btn-sm text-white mr-3"> Excluir </a>
-                                    <button onclick="editar(<?=$rsConsultaPlano['id']?>);"  class="btn btn-warning btn-sm text-black editar"> Editar </button>
+                                    <button onclick="editar(<?=$rsConsultaPlano['id']?>);"  class="btn btn-warning btn-sm text-black editar d-<?=$display?>"> Atribuir idades </button>
                                 </div>
                          </div>
                     </div>

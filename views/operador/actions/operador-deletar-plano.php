@@ -15,11 +15,18 @@ if(isset($_GET['modo'])){
 
           if(mysqli_query($conexao, $SQLdelete)){
 
-               if(!delete("plano", $idplano))
+               $SQLdeleteIdades = "DELETE FROM planos_faixas_etarias WHERE id_planos = ".$idplano;
+
+               if(mysqli_query($conexao, $SQLdeleteIdades)){
+                    
+                    if(!delete("plano", $idplano))
                     header("location: ..asdasd");
 
-               mysqli_close($conexao);
-               header('location: ../operador-planos.php?operador='.$idoperador);               
+                    mysqli_close($conexao);
+                    header('location: ../operador-planos.php?operador='.$idoperador); 
+               }
+
+                             
           }else{
                echo($SQLdelete);
           }
