@@ -9,9 +9,12 @@
         if($_GET['success'] == 'true'){
             $status = 'success d-block';
             $message = "Pergunta respondida e enviada para o site";
-        }else{
+        }else if($_GET['success'] == 'false'){
             $status = 'danger d-block';
             $message = "Erro ao conectar com o banco de dados";
+        }else if($_GET['success'] == 'info'){
+            $status = 'warning d-block';
+            $message = "Este consultor ainda possui planos ativos cadastrados";
         }
            
     }
@@ -99,9 +102,9 @@
                                 <button onclick="responder(<?=$rsConsulta['id']?>);" class=" responder btn btn-primary btn-sm">
                                     Ver
                                 </button>
-                                <button class="btn btn-danger btn-sm mr-3">
+                                <a href="actions/cms-deletar.php?id=<?=$rsConsulta['id']?>&modo=deletarfaq" class="btn btn-danger btn-sm mr-3">
                                     Excluir
-                                </button>
+                                </a>
                                 <img class="visualizado-icone-2" src="../../assets/img/<?=$visualizado?>" alt="visualized">
                             </td>
                         </tr>

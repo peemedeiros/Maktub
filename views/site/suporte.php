@@ -129,12 +129,15 @@
                         while($rsConsulta = mysqli_fetch_array($SELECT)){
 
                     ?>
-                    <div class="card mb-4 ">
-                        <div class="card-header">
+                    <div class="card mb-4 sombra">
+                        <div class="card-header bg-primary text-white ">
                             <h5><?=$rsConsulta['pergunta']?></h5>
                         </div>
                         <div class="card-body">
                             R: <?=$rsConsulta['resposta']?>
+                        </div>
+                        <div class="card-footer">
+                            <small> Respondido Por <a href="suporte.php"> Equipe Aragon </a> </small>
                         </div>
                     </div>
 
@@ -147,9 +150,9 @@
                     <h6 class="ml-3">Não achou o que procura? Mande nos sua pergunta ou entre em contato <a href="contato.php"> clicando aqui </a></h6>
                     <form class="form-inline mb-5" action="actions/cadastrar-pergunta.php" method="POST">
                         <div class="form-group mx-sm-3 mb-2">
-                            <input type="text" class="form-control" name="pergunta" id="inputPergunta" placeholder="Pergunte">
+                            <input type="text" class="form-control" name="pergunta" id="inputPergunta" placeholder="Pergunte" required>
                         </div>
-                        <button type="submit" name="btn-cadastrar-pergunta" class="btn btn-primary mb-2">Mandar nova pergunta</button>
+                        <button type="submit" name="btn-cadastrar-pergunta" class="btn light-blue btn-primary mb-2">Mandar nova pergunta</button>
                     </form>
                     
             </div>

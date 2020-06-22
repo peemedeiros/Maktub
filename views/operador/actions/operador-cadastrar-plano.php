@@ -8,7 +8,10 @@ if(isset($_POST['btn-cadastrar-plano'])){
     $id = $_GET['plano'];
     $operador = $_GET['operador'];
     $nome = $_POST['nome'];
-    $valor = $_POST['valor'];
+
+    $valor = explode(',' , $_POST['valor']);
+    $valor = $valor[0].'.'.$valor[1];
+
     $descricao = $_POST['descricao'];
     $reembolso = $_POST['reembolso'];
 

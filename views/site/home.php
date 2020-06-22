@@ -1,6 +1,12 @@
 <?php
     require_once('functions/conexao.php');
     $conexao = conexaoMysql();
+
+    if(isset($_GET['modo'])){
+        if($_GET['modo'] == 'error'){
+            header('location: views/site/simulacao-planos.php?nome='.$_GET['nome'].'&email='.$_GET['email'].'&contato='.$_GET['contato'].'&idmodalidade='.$_GET['idmodalidade'].'&idfaixa='.$_GET['idfaixa'].'&idreembolso='.$_GET['idreembolso'].'&modo=error');
+        }
+    }
 ?>
 
 <!DOCTYPE html>
@@ -146,23 +152,23 @@
                         <div class="formulario-simulacao">
                             <form method="POST" action="views/site/simulacao-planos.php">
                                 <div class="form-group">
-                                    <label for="inputNome">Nome</label>
-                                    <input type="text" name="nome" class="form-control" id="inputNome" aria-describedby="NomeHelper">
+                                    <label for="inputNome">Nome <span class="text-danger">*</span></label>
+                                    <input type="text" name="nome" class="form-control" id="inputNome" aria-describedby="NomeHelper" required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="inputContato">Contato</label>
-                                    <input type="text" name="contato" class="form-control" id="inputContato">
+                                    <label for="inputContato">Contato <span class="text-danger">*</span></label>
+                                    <input type="text" name="contato" class="form-control" id="inputContato" required>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="inputEmail">Email</label>
-                                    <input type="email" name="email" class="form-control" id="inputEmail">
+                                    <input type="email" name="email" class="form-control" id="inputEmail" >
                                 </div>
                                 
                                 <div class="form-group">
-                                    <label for="selectIdade">Idade</label>
-                                    <select class="form-control" name="idade" id="selectIdade">
-                                    <option>Selecione sua idade</option>
+                                    <label for="selectIdade">Idade <span class="text-danger">*</span></label>
+                                    <select class="form-control" name="idade" id="selectIdade" required>
+                                    <option value="">Selecione sua idade</option>
                                         <?php
                                             $SQL = "SELECT * FROM faixa_etaria";
                                             $SELECT = mysqli_query($conexao, $SQL);
@@ -180,9 +186,9 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="selectModalidade">Modalidade</label>
-                                    <select class="form-control" name="modalidade" id="selectModalidade">
-                                    <option>Tipo de acomodação</option>
+                                    <label for="selectModalidade">Modalidade <span class="text-danger">*</span></label>
+                                    <select class="form-control" name="modalidade" id="selectModalidade" required>
+                                    <option value="">Tipo de acomodação</option>
                                         <?php
                                             $SQLmodalidade = "SELECT * FROM modalidade";
                                             $SELECTmodalidade = mysqli_query($conexao, $SQLmodalidade);
@@ -200,9 +206,9 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="selectReembolso">Reembolso</label>
-                                    <select class="form-control" name="reembolso" id="selectReembolso">
-                                    <option>Tipo de reembolso</option>
+                                    <label for="selectReembolso">Reembolso <span class="text-danger">*</span></label>
+                                    <select class="form-control" name="reembolso" id="selectReembolso" required>
+                                    <option value="">Tipo de reembolso</option>
                                         <?php
                                             $SQLreembolso = "SELECT * FROM reembolso";
                                             $SELECTreembolso = mysqli_query($conexao, $SQLreembolso);
@@ -218,7 +224,7 @@
                         
                                     </select>
                                 </div>
-
+                                <small id="emailHelp" class="form-text text-muted mb-3">Os itens com <span class="text-danger">*</span> são obrigatórios</small>
                                 <button type="submit" name="btn-simular" class="btn btn-primary btn-lg btn-block">Iniciar simulação</button>
                             </form>
                         </div>

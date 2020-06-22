@@ -57,7 +57,7 @@ if(isset($_POST['modo'])){
           <form action="actions/cms-faq-responder.php?modo=responder&pergunta=<?=$id?>" method="POST">
             <div class="form-group">
                     <label for="exampleFormControlTextarea1">Resposta</label>
-                    <textarea class="form-control resize-none" name="resposta" id="exampleFormControlTextarea1"> <?=$resposta?></textarea>
+                    <textarea class="form-control resize-none" name="resposta" id="exampleFormControlTextarea1" required><?=$resposta?></textarea>
             </div>
 
           <div class="form-group row ">

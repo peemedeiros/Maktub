@@ -93,12 +93,13 @@
 
                     <div class="form-group">
                          <label for="descricao">Descrição</label>
-                         <textarea class="form-control resize-none" name="descricao" id="descricao" rows="3"></textarea>
+                         <textarea class="form-control resize-none" name="descricao" id="descricao" required rows="3"></textarea>
                     </div>
 
                     <div class="form-group">
                          <label for="reembolso">Reembolso</label>
-                         <select class="form-control" name="reembolso" id="reembolso">
+                         <select class="form-control" name="reembolso" id="reembolso" required>
+                            <option value="">selecione um reembolso</option>
                              <?php
 
                                 $SQLreembolso = "SELECT * FROM reembolso";
@@ -121,7 +122,7 @@
                             while($rsConsultaModalidade = mysqli_fetch_array($SELECTmodalidade)){
                         ?>
                             <div class="form-check form-check-inline mb-3">
-                                <input class="form-check-input" name="modalidades[]" value="<?=$rsConsultaModalidade['id']?>" type="checkbox" id="<?=$rsConsultaModalidade['id']?>" value="option1">
+                                <input class="form-check-input" name="modalidades[]" value="<?=$rsConsultaModalidade['id']?>" type="checkbox" id="<?=$rsConsultaModalidade['id']?>">
                                 <label class="form-check-label" for="<?=$rsConsultaModalidade['id']?>"><?=$rsConsultaModalidade['nome']?></label>
                             </div>
                         <?php
@@ -145,6 +146,7 @@
         </div>
 
         <?php require_once('template/nav-bar.php')?>
+        
         <div id="operador-home">
             <div class="container pt-2">
                 <div class="home-content mb-3 d-flex justify-content-between">
@@ -164,10 +166,10 @@
                     while($rsConsultaPlano = mysqli_fetch_array($SELECT)){
                 ?>
                 
-                    <div class="card min-body text-white bg-primary mb-3 aumentar-card  center" style="max-width: 18rem;">
-                         <div class="card-header"><?=$rsConsultaPlano['nome']?></div>
+                    <div class="card min-body blue text-white  mb-3 aumentar-card  center" style="max-width: 18rem;">
+                         <div class="card-header  "><?=$rsConsultaPlano['nome']?></div>
                               <div class="card-body scroll-on">
-                              <h5 class="card-title"><?=$rsConsultaPlano['valor']?></h5>
+                              <h5 class="card-title">R$ <?=number_format($rsConsultaPlano['valor'], 2, ',', '.')?></h5>
                               <p class="card-text"><?=$rsConsultaPlano['descricao']?></p>
                          </div>
                          <div class="card-footer">

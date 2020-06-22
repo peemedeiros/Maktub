@@ -4,9 +4,48 @@
 
 <!DOCTYPE html>
 <html lang="en">
-    <?php require_once('operador-headers.php')?>
+        <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Operadores</title>
+        <link rel="stylesheet" href="operador.css">
+        <link rel="stylesheet" href="../../assets/css/bootstrap.min.css" />
+        <script src="../../assets/js/jquery.js"></script>
+        <script>
+            $(document).ready(function(){
+
+                $('.editar').click(function(){
+                    $('#container-modal3').css({
+                        visibility:'visible',
+                        opacity:'1',
+                        zIndex:'999'
+                    });
+                });
+            })
+
+            function editar(idCotacao){
+                $.ajax({
+                    type:"POST",
+                    url:"template/modalCotacao.php",
+                    data:{
+                        modo:"editar",
+                        id:idCotacao,
+                    },
+                    success: function(dados){
+                        $('#modal3').html(dados);
+                    }
+                })
+            }
+        </script>
+     </head>
 
     <body>
+
+        <div id="container-modal3">
+            <div id="modal3">
+            
+            </div>
+        </div>
         
         <?php require_once('template/nav-bar.php')?>
         
@@ -42,7 +81,7 @@
                             <td><?=$rsConsulta['email']?></td>
                             <td><?=$rsConsulta['contato']?></td>
                             <td>
-                                <button class="btn btn-primary">
+                                <button onclick="editar(<?=$rsConsulta['id']?>);" class="editar btn btn-primary">
                                     ver
                                 </button>
                             </td>

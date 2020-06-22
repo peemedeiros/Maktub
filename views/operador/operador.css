@@ -68,7 +68,8 @@ body{
  }
 
 #container-modal,
-#container-modal2{
+#container-modal2,
+#container-modal3{
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.705);
@@ -82,7 +83,8 @@ body{
     transition: 500ms;
 }
 #modal,
-#modal2{
+#modal2,
+#modal3{
     width: 500px;
     height: 560px;
     box-sizing: border-box;
@@ -90,6 +92,9 @@ body{
     padding: 30px;
     background-color: rgb(253, 253, 253);
 
+}
+#modal3{
+     width: 600px !important;
 }
 .aumentar-card{
      width: 500px !important;
@@ -109,4 +114,15 @@ body{
 }
 .modal-grande{
      width: 700px !important;
+}
+
+.btn-primary,
+.blue{
+	background-color: #435c96 !important;
+}
+.btn-primary{
+	border: solid 1px #354a7a !important;
+}
+.sombra{
+	box-shadow: 3px 3px 5px #1313135e;
 }

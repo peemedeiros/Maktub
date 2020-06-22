@@ -137,11 +137,11 @@
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Nome <span class="text-danger">*</span></label>
-                            <input type="text" name="nome" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                            <input type="text" name="nome" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">Telefone para contato <span  class="text-danger">*</span></label>
-                            <input type="text" name="contato" class="form-control" id="exampleInputPassword1">
+                            <input type="text" name="contato" class="form-control" id="exampleInputPassword1" required>
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">Email</label>
@@ -149,8 +149,8 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="exampleFormControlTextarea1">Sua observação <span class="text-danger">*</span></label>
-                            <textarea name="obs" class="form-control resize-none" id="exampleFormControlTextarea1" rows="3"></textarea>
+                            <label for="exampleFormControlTextarea1">Sua observação  <span class="text-danger">*</span></label>
+                            <textarea required name="obs" class="form-control resize-none" id="exampleFormControlTextarea1" rows="3"></textarea>
                         </div>
                         <small id="emailHelp" class="form-text text-muted mb-3">Os itens com <span class="text-danger">*</span> são obrigatórios</small>
                         <button type="submit" name="btn-cadastrar-contato" class="btn btn-primary btn-block">Enviar</button>

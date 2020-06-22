@@ -9,9 +9,12 @@
         if($_GET['success'] == 'true'){
             $status = 'success d-block';
             $message = "Operacao realizada com sucesso!";
-        }else{
+        }else if($_GET['success'] == 'false'){
             $status = 'danger d-block';
             $message = "Erro ao conectar com o banco de dados";
+        }else if($_GET['success'] == 'info'){
+            $status = 'danger d-block';
+            $message = "Este consultor ainda possui planos ativos cadastrados";
         }
            
     }

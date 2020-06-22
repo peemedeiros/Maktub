@@ -12,6 +12,8 @@ if(isset($_POST['btn-simular'])){
     $reembolso = $_POST['reembolso'];
 
     $display = "block";
+    $buttonDisplay = "none";
+    $error = 'none';
 
     $aumentoPorIdade = 0;
     $aumentoPorModalidade = 0;
@@ -36,8 +38,43 @@ if(isset($_POST['btn-simular'])){
         echo('teste');
     }
 
-}else{
-    header('location: ../../index.php');
+}else if(isset($_GET['modo'])){
+    if($_GET['modo'] == 'error'){
+
+        $nome = $_GET['nome'];
+        $contato = $_GET['contato'];
+        $email = $_GET['email'];
+        $idade = $_GET['idfaixa'];
+        $modalidade = $_GET['idmodalidade'];
+        $reembolso = $_GET['idreembolso'];
+
+        $display = "block";
+        $buttonDisplay = "none";
+        $error = 'block';
+
+        $aumentoPorIdade = 0;
+        $aumentoPorModalidade = 0;
+
+        $SQLAcrescimo = "SELECT * FROM faixa_etaria WHERE id = ".$idade.";";
+        $SELECTAcrescimo = mysqli_query($conexao, $SQLAcrescimo);
+        
+        if($rsAcrescimo = mysqli_fetch_array($SELECTAcrescimo)){
+            $aumentoPorIdade = $rsAcrescimo['acrescimo'];
+        }
+
+
+        $SQLAcrescimoModalidade = "SELECT * FROM modalidade WHERE id= ".$modalidade;
+
+        if($SELECTAcrescimoModalidade = mysqli_query($conexao, $SQLAcrescimoModalidade)){
+
+            if($rsAcrescimoModalidade = mysqli_fetch_array($SELECTAcrescimoModalidade)){
+                $aumentoPorModalidade = $rsAcrescimoModalidade['acrescimo'];
+            }
+
+        }else{
+            echo('teste');
+        }
+    }
 }
 
 
@@ -123,7 +160,11 @@ if(isset($_POST['btn-simular'])){
         <div id="operador-home" class="mt-5">
             <div class="container pt-2">
                 <div class="home-content mb-3 d-flex justify-content-center">
-                    <h2>Planos ideais para a sua idade</h2>
+                    <h2>Planos ideais para você</h2>
+                    
+                </div>
+                <div class="alert alert-danger d-<?=$error?>" role="alert">
+                    Erro: Selecione um plano antes de enviar a cotação!
                 </div>
                 <hr>
                 
@@ -144,17 +185,29 @@ if(isset($_POST['btn-simular'])){
                         
                     <?php
                     
-                        $SQLselect = "SELECT plano.*, reembolso.nome AS reembolso, planos_faixas_etarias.id_faixas_etarias as idIdade, planos_modalidades.id_modalidades FROM plano INNER JOIN reembolso ON plano.id_reembolso = reembolso.id INNER JOIN planos_faixas_etarias ON plano.id = planos_faixas_etarias.id_planos INNER JOIN planos_modalidades ON plano.id = planos_modalidades.id_planos WHERE planos_faixas_etarias.id_faixas_etarias = ".$idade." AND planos_modalidades.id_modalidades =".$modalidade;
-                        $SELECT = mysqli_query($conexao, $SQLselect);
+                        $SQLselect = "SELECT plano.*,
+                                            reembolso.nome AS reembolso,
+                                            planos_faixas_etarias.id_faixas_etarias as idIdade,
+                                            planos_modalidades.id_modalidades 
+                                            FROM plano INNER JOIN reembolso ON plano.id_reembolso = reembolso.id 
+                                            INNER JOIN planos_faixas_etarias ON plano.id = planos_faixas_etarias.id_planos 
+                                            INNER JOIN planos_modalidades ON plano.id = planos_modalidades.id_planos 
+                                            WHERE planos_faixas_etarias.id_faixas_etarias = ".$idade." AND 
+                                            planos_modalidades.id_modalidades =".$modalidade." AND 
+                                            plano.id_reembolso = ".$reembolso;
                         
+                        $SELECT = mysqli_query($conexao, $SQLselect);
                         while($rsConsultaPlano = mysqli_fetch_array($SELECT)){
-
-                            if(count($rsConsultaPlano))
+                            
+                            if(count($rsConsultaPlano)){
                                 $display = "none";
+                                $buttonDisplay = "flex";
+                            }
+                                
 
                     ?>
                         
-                        <div class="card min-body text-white bg-primary mb-3 aumentar-card  center" style="max-width: 18rem;">
+                        <div class="card sombra aumentar-card text-white bg-primary mb-3 aumentar-card  center" style="max-width: 18rem;">
                             <div class="card-header"><?=$rsConsultaPlano['nome']?></div>
                                 
                                 <div class="card-body scroll-on">
@@ -186,7 +239,7 @@ if(isset($_POST['btn-simular'])){
                                     </div>
 
                                     <div class="d-flex">
-                                        <label for="plano<?=$rsConsultaPlano['id']?>" class="btn btn-success btn-sm botaoSelecionado"> Selecionar </label>
+                                        <label for="plano<?=$rsConsultaPlano['id']?>" class="btn btn-success btn botaoSelecionado"> Selecionar plano </label>
                                         <input class="form-check-input d-none" type="radio" name="selecionePlano" id="plano<?=$rsConsultaPlano['id']?>" value=" <?=$rsConsultaPlano['id']?> ">
                                     </div>
                             </div>
@@ -196,10 +249,10 @@ if(isset($_POST['btn-simular'])){
                         }
                     ?>      
                         <div class="alert alert-warning d-<?=$display?>" role="alert">
-                            Não temos planos disponíveis para a sua idade, fale diretamente conosco <a href="contato.php"> clicando aqui </a>
+                            Não temos planos disponíveis para as opções escolhidas, fale diretamente conosco <a href="contato.php"> clicando aqui </a>
                         </div>      
                     </div>
-                    <div class="row d-flex justify-content-center mb-5">
+                    <div class="row d-<?=$buttonDisplay?> justify-content-center mb-5">
                         <button name="btn-cadastrar-cotacao" class="btn btn-success btn-lg"> Enviar cotação</button>
                     </div>
                 </form>

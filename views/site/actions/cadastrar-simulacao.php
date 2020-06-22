@@ -23,7 +23,7 @@ if(isset($_POST['btn-cadastrar-cotacao'])){
         mysqli_close($conexao);
         header('location: ../contato.php?success=info');
     }else{
-        echo("<p>".$SQL."</p>");
+        header('location: ../../../index.php?nome='.$nome.'&email='.$email.'&contato='.$contato.'&idmodalidade='.$modalidade.'&idfaixa='.$idade.'&idreembolso='.$reembolso.'&modo=error');
     }
 
 }
