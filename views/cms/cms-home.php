@@ -1,7 +1,8 @@
 <?php
     require_once('../../functions/conexao.php');
     $conexao = conexaoMysql();
-
+    //Trazendo alert de erros
+    
     $status = 'info d-none';
     $message = "";
 

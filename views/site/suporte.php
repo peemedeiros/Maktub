@@ -2,6 +2,8 @@
     require_once('../../functions/conexao.php');
     $conexao = conexaoMysql();
 
+    // Exibe mensagem de erro, successo ou informação
+    // de acordo com a ação do usuario
     $status = 'info d-none';
     $message = "";
     $pergunta = "";
@@ -114,12 +116,13 @@
                 <div id="duvidas">
 
                     <?php
-
+                        //buscando perguntas de acordo com o valor do input
                         if(isset($_POST['btn-buscar'])){
 
                             $SQL = "SELECT * FROM faq WHERE pergunta LIKE '%".$pergunta."%' AND status = 1 ";
                             
                         }else{
+                            //traz apenas questões respondidas
                             $SQL = "SELECT * FROM faq WHERE status = 1";
                         }
 

@@ -11,6 +11,8 @@ if(isset($_GET['modo'])){
           $idoperador = $_GET['operador'];
           $idplano = $_GET['idplano'];
 
+          //deleta primeiro as modalidades antes de deletar os planos
+
           $SQLdelete = "DELETE FROM planos_modalidades WHERE id_planos = ".$idplano;
 
           if(mysqli_query($conexao, $SQLdelete)){

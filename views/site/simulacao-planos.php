@@ -39,6 +39,10 @@ if(isset($_POST['btn-simular'])){
     }
 
 }else if(isset($_GET['modo'])){
+
+    //Recolocando os dados que o usuario selecionou no inicio da simulação
+    //e gerando uma nova tentativa, para que ele selecione um plano
+
     if($_GET['modo'] == 'error'){
 
         $nome = $_GET['nome'];
@@ -91,6 +95,7 @@ if(isset($_POST['btn-simular'])){
         <link rel="icon" type="imagem/png" href="../../assets/img/aragon-icon.png" />
         <script src="../../assets/js/jquery.js"></script>
         <script>
+            //mostrando qual plano está selecionado 
             $(document).ready(function(){
                 $('.botaoSelecionado').click(function(){
                     $('.botaoSelecionado').css({border:'', color:'', backgroundColor:''});
@@ -184,7 +189,9 @@ if(isset($_POST['btn-simular'])){
                     <div class="row d-flex">
                         
                     <?php
-                    
+
+                        //Trazendo todas as informações do plano.
+
                         $SQLselect = "SELECT plano.*,
                                             reembolso.nome AS reembolso,
                                             planos_faixas_etarias.id_faixas_etarias as idIdade,

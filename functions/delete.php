@@ -1,5 +1,7 @@
 <?php
 
+
+//função de delete
 function delete($table, $id){
       
      require_once('conexao.php');

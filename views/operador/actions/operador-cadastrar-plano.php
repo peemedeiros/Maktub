@@ -1,5 +1,7 @@
 <?php
 
+//realizando o cadastro do plano
+
 require_once('../../../database/env/conexao.php');
 $conexao = conexaoMysql();
 
@@ -18,8 +20,10 @@ if(isset($_POST['btn-cadastrar-plano'])){
         $SQL = "INSERT INTO plano (nome, valor, descricao, id_operador, id_reembolso) 
                 VALUES ('".$nome."', '".$valor."', '".$descricao."', ".$operador.", ".$reembolso.")";
     
+    //cadastra o plano
     if(mysqli_query($conexao, $SQL)){
 
+        //recupera o ultimo plano inserido
         $SQLlastId = "SELECT * FROM plano ORDER BY id DESC LIMIT 1";
 
         $SQLlastId = mysqli_query($conexao, $SQLlastId);
@@ -29,7 +33,8 @@ if(isset($_POST['btn-cadastrar-plano'])){
             if(!empty($_POST['modalidades'])){
 
                 foreach($_POST['modalidades'] as $selected){
-        
+                    
+                    //cadastra as modalidades no plano
                     $SQLmodalidades = "INSERT INTO planos_modalidades (id_planos, id_modalidades) 
                                         VALUES ('".$rsInserted['id']."', '".$selected."')";
     

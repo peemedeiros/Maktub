@@ -1,5 +1,7 @@
 <?php
 
+    // Exibe mensagem de erro, successo ou informação
+    // de acordo com a ação do usuario
     $status = 'info d-none';
     $message = "";
 

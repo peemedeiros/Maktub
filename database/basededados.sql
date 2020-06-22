@@ -39,8 +39,67 @@ CREATE TABLE `administrador` (
 
 LOCK TABLES `administrador` WRITE;
 /*!40000 ALTER TABLE `administrador` DISABLE KEYS */;
-INSERT INTO `administrador` VALUES (1,'Pedro Medeiros','pedrohenriquelm500@gmail.com','123');
+INSERT INTO `administrador` VALUES (1,'Pedro','aragon@admin.com','123');
 /*!40000 ALTER TABLE `administrador` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `contato`
+--
+
+DROP TABLE IF EXISTS `contato`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `contato` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nome` varchar(70) NOT NULL,
+  `contato` varchar(20) NOT NULL,
+  `email` varchar(100) DEFAULT NULL,
+  `obs` text NOT NULL,
+  `data` date NOT NULL,
+  `status` tinyint(4) NOT NULL DEFAULT '1',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `contato`
+--
+
+LOCK TABLES `contato` WRITE;
+/*!40000 ALTER TABLE `contato` DISABLE KEYS */;
+/*!40000 ALTER TABLE `contato` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `cotacao`
+--
+
+DROP TABLE IF EXISTS `cotacao`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `cotacao` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nome` varchar(100) NOT NULL,
+  `email` varchar(100) DEFAULT NULL,
+  `contato` varchar(20) NOT NULL,
+  `id_operador` int(11) NOT NULL,
+  `id_plano` int(11) NOT NULL,
+  `id_modalidade` int(11) NOT NULL,
+  `id_faixa_etaria` int(11) NOT NULL,
+  `id_reembolso` int(11) NOT NULL,
+  `status` tinyint(4) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `cotacao`
+--
+
+LOCK TABLES `cotacao` WRITE;
+/*!40000 ALTER TABLE `cotacao` DISABLE KEYS */;
+/*!40000 ALTER TABLE `cotacao` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -52,9 +111,10 @@ DROP TABLE IF EXISTS `faixa_etaria`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `faixa_etaria` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `range` varchar(20) NOT NULL,
+  `range_idade` varchar(20) NOT NULL,
+  `acrescimo` int(11) NOT NULL DEFAULT '10',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -63,7 +123,33 @@ CREATE TABLE `faixa_etaria` (
 
 LOCK TABLES `faixa_etaria` WRITE;
 /*!40000 ALTER TABLE `faixa_etaria` DISABLE KEYS */;
+INSERT INTO `faixa_etaria` VALUES (1,'0-18',50),(2,'19-23',70),(3,'24-28',120),(4,'29-33',150),(5,'34-38',180),(6,'39-43',230),(7,'44-48',260),(8,'49-53',330),(9,'54-58',360),(10,'59+',400);
 /*!40000 ALTER TABLE `faixa_etaria` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `faq`
+--
+
+DROP TABLE IF EXISTS `faq`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `faq` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `pergunta` text NOT NULL,
+  `resposta` text,
+  `status` tinyint(4) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `faq`
+--
+
+LOCK TABLES `faq` WRITE;
+/*!40000 ALTER TABLE `faq` DISABLE KEYS */;
+/*!40000 ALTER TABLE `faq` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -76,8 +162,9 @@ DROP TABLE IF EXISTS `modalidade`;
 CREATE TABLE `modalidade` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nome` varchar(50) NOT NULL,
+  `acrescimo` int(11) NOT NULL DEFAULT '10',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -86,6 +173,7 @@ CREATE TABLE `modalidade` (
 
 LOCK TABLES `modalidade` WRITE;
 /*!40000 ALTER TABLE `modalidade` DISABLE KEYS */;
+INSERT INTO `modalidade` VALUES (1,'Apartamento',100),(2,'Enfermaria',50);
 /*!40000 ALTER TABLE `modalidade` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -103,7 +191,7 @@ CREATE TABLE `operador` (
   `senha` varchar(100) NOT NULL,
   `ativo` tinyint(4) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -112,7 +200,6 @@ CREATE TABLE `operador` (
 
 LOCK TABLES `operador` WRITE;
 /*!40000 ALTER TABLE `operador` DISABLE KEYS */;
-INSERT INTO `operador` VALUES (1,'Pedro','pedro@gmail.com','202cb962ac59075b964b07152d234b70',1),(2,'Teste','teste@teste.com','202cb962ac59075b964b07152d234b70',1);
 /*!40000 ALTER TABLE `operador` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -131,11 +218,12 @@ CREATE TABLE `plano` (
   `id_operador` int(11) NOT NULL,
   `id_reembolso` int(11) NOT NULL,
   PRIMARY KEY (`id`),
+  UNIQUE KEY `nome_UNIQUE` (`nome`),
   KEY `fkoperadora_idx` (`id_operador`),
   KEY `fkreembolso_idx` (`id_reembolso`),
   CONSTRAINT `fkoperadora` FOREIGN KEY (`id_operador`) REFERENCES `operador` (`id`),
   CONSTRAINT `fkreembolso` FOREIGN KEY (`id_reembolso`) REFERENCES `reembolso` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -145,6 +233,32 @@ CREATE TABLE `plano` (
 LOCK TABLES `plano` WRITE;
 /*!40000 ALTER TABLE `plano` DISABLE KEYS */;
 /*!40000 ALTER TABLE `plano` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `planos_faixas_etarias`
+--
+
+DROP TABLE IF EXISTS `planos_faixas_etarias`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `planos_faixas_etarias` (
+  `id_planos` int(11) NOT NULL,
+  `id_faixas_etarias` int(11) NOT NULL,
+  KEY `fk_planos_idade_idx` (`id_planos`),
+  KEY `fk_idade_planos_idx` (`id_faixas_etarias`),
+  CONSTRAINT `fk_idade_planos` FOREIGN KEY (`id_faixas_etarias`) REFERENCES `faixa_etaria` (`id`),
+  CONSTRAINT `fk_planos_idade` FOREIGN KEY (`id_planos`) REFERENCES `plano` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `planos_faixas_etarias`
+--
+
+LOCK TABLES `planos_faixas_etarias` WRITE;
+/*!40000 ALTER TABLE `planos_faixas_etarias` DISABLE KEYS */;
+/*!40000 ALTER TABLE `planos_faixas_etarias` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -184,7 +298,7 @@ CREATE TABLE `reembolso` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nome` varchar(45) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -193,6 +307,7 @@ CREATE TABLE `reembolso` (
 
 LOCK TABLES `reembolso` WRITE;
 /*!40000 ALTER TABLE `reembolso` DISABLE KEYS */;
+INSERT INTO `reembolso` VALUES (1,'Total'),(2,'Parcial'),(4,'Sem reembolso');
 /*!40000 ALTER TABLE `reembolso` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -205,4 +320,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-06-16  2:54:27
+-- Dump completed on 2020-06-22 11:48:45

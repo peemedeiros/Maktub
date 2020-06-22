@@ -29,6 +29,7 @@
           <link rel="stylesheet" href="../../assets/css/bootstrap.min.css" />
           <script src="../../assets/js/jquery.js"></script>
           <script>
+            //Controle das modais de cadastro e edição de planos
                $(document).ready(function(){
                     $('.cadastrar').click(function(){
                          $('#container-modal').css({
@@ -53,7 +54,8 @@
                         });
                     });
                })
-
+               
+               //Carregando informações do plano selecionado na modal
                function editar(idPlano){
                     $.ajax({
                         type:"POST",

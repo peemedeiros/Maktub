@@ -23,6 +23,7 @@ if(isset($_POST['btn-cadastrar-cotacao'])){
         mysqli_close($conexao);
         header('location: ../contato.php?success=info');
     }else{
+        //caso o usuario não selecione um plano, os dados são enviados para index
         header('location: ../../../index.php?nome='.$nome.'&email='.$email.'&contato='.$contato.'&idmodalidade='.$modalidade.'&idfaixa='.$idade.'&idreembolso='.$reembolso.'&modo=error');
     }
 

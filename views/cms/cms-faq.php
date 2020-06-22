@@ -5,6 +5,7 @@
     $status = 'info d-none';
     $message = "";
 
+    //trazendo mensagem de erros
     if(isset($_GET['success'])){
         if($_GET['success'] == 'true'){
             $status = 'success d-block';

@@ -6,7 +6,7 @@
                     <img src="assets/img/user.png" alt="login">
                 </div>
                 <div class="nav-link">
-                    <a href="views/operador/operador-login.php" class="text-white">Sou consultor</a>
+                    <a href="views/operador/operador-login.php" target="_blank" class="text-white">Sou consultor</a>
                 </div>
             </div>
 
@@ -15,7 +15,7 @@
                     <img src="assets/img/adm.png" alt="login">
                 </div>
                 <div class="nav-link">
-                    <a href="views/cms/cms-login.php" class="text-white">Sou administrador</a>
+                    <a href="views/cms/cms-login.php" target="_blank" class="text-white">Sou administrador</a>
                 </div>
             </div>
         </div>

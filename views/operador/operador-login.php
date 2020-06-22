@@ -33,6 +33,7 @@
                               </div>
                               
                               <button type="submit" name="btn-login" class="btn btn-primary">Entrar</button>
+                              <a href="../../index.php" class="btn btn-warning">Voltar</a>
                          </form>
                     </div>
                </div>

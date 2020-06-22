@@ -2,6 +2,12 @@
     require_once('functions/conexao.php');
     $conexao = conexaoMysql();
 
+
+    //Caso o usuario não tenha selecionado um plano, os dados que ele colocou
+    //serão trazidos da action de cadastro de simulacao
+    //caso a query string modo for error ele manda o usuario de volta para a 
+    //tela de selecão de planos com seus dados ja colocados
+
     if(isset($_GET['modo'])){
         if($_GET['modo'] == 'error'){
             header('location: views/site/simulacao-planos.php?nome='.$_GET['nome'].'&email='.$_GET['email'].'&contato='.$_GET['contato'].'&idmodalidade='.$_GET['idmodalidade'].'&idfaixa='.$_GET['idfaixa'].'&idreembolso='.$_GET['idreembolso'].'&modo=error');
@@ -170,6 +176,8 @@
                                     <select class="form-control" name="idade" id="selectIdade" required>
                                     <option value="">Selecione sua idade</option>
                                         <?php
+                                            //listando faixas de idade
+
                                             $SQL = "SELECT * FROM faixa_etaria";
                                             $SELECT = mysqli_query($conexao, $SQL);
 
@@ -190,6 +198,8 @@
                                     <select class="form-control" name="modalidade" id="selectModalidade" required>
                                     <option value="">Tipo de acomodação</option>
                                         <?php
+                                            //listando modalidades
+
                                             $SQLmodalidade = "SELECT * FROM modalidade";
                                             $SELECTmodalidade = mysqli_query($conexao, $SQLmodalidade);
 
@@ -210,6 +220,9 @@
                                     <select class="form-control" name="reembolso" id="selectReembolso" required>
                                     <option value="">Tipo de reembolso</option>
                                         <?php
+
+                                            //listando opções de reembolso
+                                            
                                             $SQLreembolso = "SELECT * FROM reembolso";
                                             $SELECTreembolso = mysqli_query($conexao, $SQLreembolso);
 

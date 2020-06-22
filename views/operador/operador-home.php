@@ -1,4 +1,5 @@
 <?php
+    // verificando o operador logado
      require_once('actions/operador-logged.php');
 ?>
 
@@ -12,6 +13,8 @@
         <link rel="stylesheet" href="../../assets/css/bootstrap.min.css" />
         <script src="../../assets/js/jquery.js"></script>
         <script>
+
+            //controle de modal
             $(document).ready(function(){
 
                 $('.editar').click(function(){
@@ -23,6 +26,7 @@
                 });
             })
 
+            //carrega as informações da cotação
             function editar(idCotacao){
                 $.ajax({
                     type:"POST",
@@ -70,9 +74,6 @@
                             
                             if($SELECT = mysqli_query($conexao, $SQL)){
                                 while($rsConsulta = mysqli_fetch_array($SELECT)){
-                           
-
-                            
                                
                         ?>
 

@@ -1,5 +1,5 @@
 <?php
-
+    //criando conexao com o banco de dados
     function conexaoMysql(){
         
         $server = (string) "localhost"; 
